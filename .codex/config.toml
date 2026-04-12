@@ -1,0 +1,26 @@
+[features]
+multi_agent = true
+
+[agents.planner]
+layer = ".codex/agents/planner.toml"
+
+[agents.ui_designer]
+layer = ".codex/agents/ui-designer.toml"
+
+[agents.frontend_engineer]
+layer = ".codex/agents/frontend-engineer.toml"
+
+[agents.backend_engineer]
+layer = ".codex/agents/backend-engineer.toml"
+
+[agents.database_engineer]
+layer = ".codex/agents/database-engineer.toml"
+
+[agents.ml_inference_engineer]
+layer = ".codex/agents/ml-inference-engineer.toml"
+
+[agents.qa_engineer]
+layer = ".codex/agents/qa-engineer.toml"
+
+[agents.github_pr_writer]
+layer = ".codex/agents/github-pr-writer.toml"
