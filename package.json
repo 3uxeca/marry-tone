@@ -1,0 +1,12 @@
+{
+  "name": "marry-tone",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "pnpm --parallel --if-present --filter \"./services/api\" --filter \"./services/ml\" --filter \"./apps/web\" run dev",
+    "lint": "pnpm -r --if-present run lint",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "test": "pnpm -r --if-present run test",
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run test"
+  }
+}
