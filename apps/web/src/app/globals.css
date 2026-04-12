@@ -1,0 +1,62 @@
+:root {
+  --brand-pink: #ffb1ee;
+  --bg: #fff8fd;
+  --text: #2b1b28;
+  --surface: #ffffff;
+  --surface-border: #ffd2f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: radial-gradient(circle at top, #ffe8fa 0%, var(--bg) 48%, #fff 100%);
+  color: var(--text);
+}
+
+.page-shell {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.card {
+  width: min(100%, 40rem);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(255, 177, 238, 0.18);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--brand-pink);
+  color: #3b2737;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
