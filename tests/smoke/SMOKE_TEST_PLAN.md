@@ -31,7 +31,7 @@ Establish a minimal pass/fail gate that confirms monorepo infrastructure wiring 
    - Commands:
      - `curl -f http://localhost:${API_PORT:-4000}/health`
      - `curl -f http://localhost:${ML_PORT:-8000}/health`
-     - `curl -f http://localhost:${WEB_PORT:-3000}`
+     - `curl -f http://localhost:${WEB_PORT:-3003}`
    - Expected: each command exits `0`.
 
 ## Exit Criteria

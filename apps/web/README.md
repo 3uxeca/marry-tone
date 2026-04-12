@@ -10,7 +10,7 @@ Minimal frontend baseline for MarryTone using Next.js App Router.
 
 ## Scripts
 
-- `npm run dev` - start local dev server (http://localhost:3000)
+- `npm run dev` - start local dev server (http://localhost:3003)
 - `npm run build` - production build
 - `npm run start` - run production server
 - `npm run lint` - run Next.js ESLint checks
