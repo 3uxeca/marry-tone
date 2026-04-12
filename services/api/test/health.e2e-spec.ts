@@ -1,6 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
-import request from "supertest";
 
 import { AppModule } from "../src/app.module";
 import { MlHealthService } from "../src/internal/ml-health.service";
@@ -36,18 +35,26 @@ describe("Phase0 Health Endpoints", () => {
   });
 
   it("GET /health returns api health", async () => {
-    const response = await request(app.getHttpServer()).get("/health");
+    const response = await app.inject({
+      method: "GET",
+      url: "/health",
+    });
+    const body = response.json();
 
-    expect(response.status).toBe(200);
-    expect(response.body.status).toBe("ok");
-    expect(response.body.service).toBe("api");
+    expect(response.statusCode).toBe(200);
+    expect(body.status).toBe("ok");
+    expect(body.service).toBe("api");
   });
 
   it("GET /internal/ml/health returns sidecar health envelope", async () => {
-    const response = await request(app.getHttpServer()).get("/internal/ml/health");
+    const response = await app.inject({
+      method: "GET",
+      url: "/internal/ml/health",
+    });
+    const body = response.json();
 
-    expect(response.status).toBe(200);
-    expect(response.body.status).toBe("ok");
-    expect(response.body.sidecar.service).toBe("ml-sidecar");
+    expect(response.statusCode).toBe(200);
+    expect(body.status).toBe("ok");
+    expect(body.sidecar.service).toBe("ml-sidecar");
   });
 });
