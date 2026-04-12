@@ -11,3 +11,5 @@ coverage/
 *.log
 .DS_Store
 .agents/
+__pycache__/
+.venv/

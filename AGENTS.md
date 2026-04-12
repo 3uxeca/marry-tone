@@ -50,6 +50,7 @@ It is aligned with `AGENTS_ECC.md` and `blueprint-wedding-style-coach.md`.
 3. Validation logic and failure fallback are implemented.
 4. Docs/specs are updated when behavior changes.
 5. PR contains risk notes and a concrete test plan.
+6. For Phase 0 scope, completed work is appended to `docs/phase0-timeline.md`.
 
 ## Security and Privacy Rules (MarryTone)
 
