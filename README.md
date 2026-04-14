@@ -61,9 +61,29 @@ curl -f http://localhost:8000/health
 curl -f http://localhost:3003
 ```
 
+## UI Reference Preview
+
+- Stitch reference index: `http://localhost:3003/ui/stitch`
+- Screen preview: `http://localhost:3003/ui/stitch/1` ~ `http://localhost:3003/ui/stitch/13`
+
+## Routed Pages (Actual App Routes)
+
+- `http://localhost:3003/home`
+- `http://localhost:3003/diagnosis/gate`
+- `http://localhost:3003/diagnosis/intake`
+- `http://localhost:3003/diagnosis/upload`
+- `http://localhost:3003/results/personal-color`
+- `http://localhost:3003/results/skeleton`
+- `http://localhost:3003/recommendations`
+- `http://localhost:3003/saved`
+- `http://localhost:3003/comparison`
+- `http://localhost:3003/consensus`
+- `http://localhost:3003/checklist`
+- `http://localhost:3003/coach`
+- `http://localhost:3003/my`
+
 ## Optional: Full Docker Compose
 
 ```bash
 docker compose up -d --build
 ```
-

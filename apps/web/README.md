@@ -27,5 +27,20 @@ npm run dev
 
 ## Routes
 
-- `/` - minimal landing page
+- `/` - routed page index
+- `/home` - app home
+- `/diagnosis/gate` - diagnosis gate
+- `/diagnosis/intake` - diagnosis intake
+- `/diagnosis/upload` - photo diagnosis
+- `/results/personal-color` - personal color result
+- `/results/skeleton` - skeleton result
+- `/recommendations` - recommendation list
+- `/saved` - saved cards
+- `/comparison` - comparison board
+- `/consensus` - consensus board (A policy)
+- `/checklist` - wedding checklist
+- `/coach` - style coach summary
+- `/my` - my page
 - `/health` - simple health status page
+- `/ui/stitch` - stitch_marrytone reference gallery
+- `/ui/stitch/[screen]` - iframe preview for `_1` ~ `_13`
