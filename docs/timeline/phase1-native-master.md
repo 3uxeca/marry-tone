@@ -38,3 +38,5 @@
 | 2026-04-14 21:33 | ui-b | phase1/native-b | saved/results/recommendation/comparison 네이티브 JSX 이식 | done | `2a7a5dd` |
 | 2026-04-14 21:32 | ui-c | phase1/native-c | consensus/checklist/coach/my 네이티브 JSX 이식 | done | `584f662` |
 | 2026-04-14 21:35 | coordinator | phase1/native-coord | ui-a/ui-b/ui-c 병합 완료 | done | merge commit 3건 |
+| 2026-04-14 21:41 | coordinator | phase1/native-coord | `<img>` -> `next/image` 전환(신규 이식 페이지) | done | lint 경고를 stitch preview 2건으로 축소 |
+| 2026-04-14 21:42 | coordinator | main | `@marrytone/web` build 재검증 | done | build 성공, 경고 2건은 `/ui/stitch/*` 기존 미리보기 경로 |
