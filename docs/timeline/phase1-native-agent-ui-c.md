@@ -9,3 +9,4 @@
 | Time (KST) | Task | Status | Notes |
 |---|---|---|---|
 | 2026-04-14 21:21 | Assigned work scope fixed | done | 4 routes |
+| 2026-04-14 21:32 | consensus/checklist/coach/my 4 routes native JSX 이식 | done | commit `584f662` |

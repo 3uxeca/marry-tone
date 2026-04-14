@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
@@ -16,10 +17,12 @@ export default function ConsensusPage() {
       }
     >
       <article className="mt2-card strong">
-        <img
+        <Image
           src="/stitch/_10/screen.png"
           alt="합의 보드 레이아웃 참고 이미지"
           className="mt2-media square"
+          width={1080}
+          height={1920}
         />
         <h2>최종 합의안 1안</h2>
         <p>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
@@ -26,10 +27,12 @@ export default function HomeRoutePage() {
               <span className="mt2-pill">Natural Glow</span>
             </div>
           </article>
-          <img
+          <Image
             className="mt2-media"
             src="/stitch/_3/screen.png"
             alt="MarryTone home hero preview"
+            width={1080}
+            height={1920}
           />
         </div>
         <div className="mt2-actions">
@@ -46,28 +49,34 @@ export default function HomeRoutePage() {
         <article className="mt2-card">
           <h3>대안 A: 클래식 블러시</h3>
           <p>단정한 실루엣과 은은한 볼륨 헤어로 격식 있는 무드.</p>
-          <img
+          <Image
             className="mt2-media square"
             src="/stitch/_8/screen.png"
             alt="Alternative style A preview"
+            width={1080}
+            height={1920}
           />
         </article>
         <article className="mt2-card soft">
           <h3>대안 B: 모던 미니멀</h3>
           <p>톤다운 화이트와 샤프한 턱시도 라인 조합.</p>
-          <img
+          <Image
             className="mt2-media square"
             src="/stitch/_9/screen.png"
             alt="Alternative style B preview"
+            width={1080}
+            height={1920}
           />
         </article>
         <article className="mt2-card">
           <h3>대안 C: 가든 내추럴</h3>
           <p>야외/반야외 예식장에 맞춘 생화 느낌 스타일.</p>
-          <img
+          <Image
             className="mt2-media square"
             src="/stitch/_5/screen.png"
             alt="Alternative style C preview"
+            width={1080}
+            height={1920}
           />
         </article>
       </section>

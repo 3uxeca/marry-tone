@@ -33,3 +33,8 @@
   - `apps/web/src/app/checklist/page.tsx`
   - `apps/web/src/app/coach/page.tsx`
   - `apps/web/src/app/my/page.tsx`
+| 2026-04-14 21:25 | coordinator | phase1/native-coord | ECC frontend agents `ui-a/ui-b/ui-c` 병렬 투입 | in_progress | 라우트별 iframe 제거 및 native JSX 이식 |
+| 2026-04-14 21:30 | ui-a | phase1/native-a | home/diagnosis 라우트 네이티브 JSX 이식 | done | `1224f8c` |
+| 2026-04-14 21:33 | ui-b | phase1/native-b | saved/results/recommendation/comparison 네이티브 JSX 이식 | done | `2a7a5dd` |
+| 2026-04-14 21:32 | ui-c | phase1/native-c | consensus/checklist/coach/my 네이티브 JSX 이식 | done | `584f662` |
+| 2026-04-14 21:35 | coordinator | phase1/native-coord | ui-a/ui-b/ui-c 병합 완료 | done | merge commit 3건 |

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../../_components/native-shell";
@@ -14,10 +15,12 @@ export default function DiagnosisGatePage() {
         <article className="mt2-card strong">
           <h2>경험 있음</h2>
           <p>이미 받은 퍼스널컬러/골격 진단 결과를 입력해 빠르게 추천을 진행합니다.</p>
-          <img
+          <Image
             className="mt2-media"
             src="/stitch/_2/screen.png"
             alt="Diagnosis experience available"
+            width={1080}
+            height={1920}
           />
           <div className="mt2-pill-row">
             <span className="mt2-pill">즉시 입력</span>
@@ -33,10 +36,12 @@ export default function DiagnosisGatePage() {
         <article className="mt2-card soft">
           <h2>경험 없음</h2>
           <p>업로드 가이드를 따라 사진을 제출하면 자동 진단 후 결과를 채워줍니다.</p>
-          <img
+          <Image
             className="mt2-media"
             src="/stitch/_4/screen.png"
             alt="Diagnosis experience unavailable"
+            width={1080}
+            height={1920}
           />
           <div className="mt2-pill-row">
             <span className="mt2-pill">사진 업로드</span>

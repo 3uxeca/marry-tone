@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
@@ -23,10 +24,12 @@ export default function ChecklistPage() {
       subtitle="필수 항목 100% 완료 시 MVP 완료로 처리됩니다."
     >
       <article className="mt2-card strong">
-        <img
+        <Image
           src="/stitch/_11/screen.png"
           alt="체크리스트 화면 참고 이미지"
           className="mt2-media square"
+          width={1080}
+          height={1920}
         />
         <h2>
           진행률 {completedCount}/{checklistItems.length} ({progress}%)

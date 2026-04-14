@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
@@ -16,10 +17,12 @@ export default function CoachPage() {
       }
     >
       <article className="mt2-card strong">
-        <img
+        <Image
           src="/stitch/_12/screen.png"
           alt="코칭 인사이트 대시보드 참고 이미지"
           className="mt2-media"
+          width={1080}
+          height={1920}
         />
         <h2>이번 주 코칭 핵심</h2>
         <p>
