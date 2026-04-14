@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MarryTone - Photo Diagnosis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f1",
+                        "surface-container": "#efedee",
+                        "primary": "#88487d",
+                        "surface-tint": "#88487d",
+                        "background": "#fbf9fa",
+                        "secondary-fixed-dim": "#9ecee2",
+                        "primary-fixed-dim": "#fbaeea",
+                        "on-tertiary-container": "#3d5d16",
+                        "on-surface-variant": "#4f434b",
+                        "tertiary": "#47681f",
+                        "secondary-fixed": "#baeaff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbd9da",
+                        "on-surface": "#1b1c1d",
+                        "primary-fixed": "#ffd7f3",
+                        "surface-variant": "#e4e2e3",
+                        "on-primary-container": "#7c3e73",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d3c2cc",
+                        "inverse-primary": "#fbaeea",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001f29",
+                        "inverse-surface": "#303031",
+                        "outline": "#81737c",
+                        "on-tertiary-fixed-variant": "#304f06",
+                        "on-secondary-fixed-variant": "#194c5e",
+                        "tertiary-fixed": "#c7ef96",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#6c3064",
+                        "on-background": "#1b1c1d",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9fa",
+                        "surface-container-low": "#f5f3f4",
+                        "on-tertiary-fixed": "#102000",
+                        "secondary": "#356476",
+                        "tertiary-container": "#afd680",
+                        "on-secondary-container": "#3b6a7c",
+                        "tertiary-fixed-dim": "#acd37d",
+                        "surface-container-high": "#e9e8e9",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ffb1ee",
+                        "surface-container-highest": "#e4e2e3",
+                        "secondary-container": "#baeaff",
+                        "on-primary-fixed": "#390035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-plus { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<header class="fixed top-0 w-full z-50 bg-[#fbf9fa]/60 backdrop-blur-xl bg-gradient-to-b from-[#fbf9fa] to-transparent shadow-[0_4px_40px_rgba(27,28,29,0.04)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="crown">crown</span>
+<span class="text-xl font-bold text-black tracking-widest uppercase font-headline">MarryTone</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:opacity-70 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-6">
+<section class="mb-10 text-center">
+<h1 class="text-[2rem] font-bold leading-tight tracking-tight text-on-surface font-headline mb-4">
+                정확한 분석을 위해<br/>사진을 업로드해 주세요
+            </h1>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-[280px] mx-auto">
+                얼굴이 잘 보이는 정면 사진과 전신 사진이 필요합니다.
+            </p>
+</section>
+<div class="grid grid-cols-1 gap-6 mb-8">
+<div class="relative group aspect-[4/5] bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary-container/10 to-secondary-container/10"></div>
+<div class="relative z-10 flex flex-col items-center gap-4">
+<div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-4xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div class="text-center">
+<span class="block text-on-surface font-bold text-lg mb-1">정면 및 전신 사진 업로드</span>
+<span class="block text-[0.75rem] text-outline uppercase tracking-widest font-bold">Recommended: 10MB limit</span>
+</div>
+</div>
+<img alt="Photo upload area background" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale" data-alt="Soft ethereal background with subtle fashion photography silhouettes in high key lighting" src="/stitch/_4/screen.png"/>
+</div>
+<div class="bg-secondary-container/30 p-6 rounded-lg flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="flex flex-col gap-1">
+<span class="text-sm font-bold text-on-secondary-container">Tip for Best Results</span>
+<p class="text-xs text-on-secondary-container/80 leading-relaxed">자연광에서 촬영한 사진일수록 퍼스널 컬러 및 웨딩 톤 분석 결과가 더욱 정확해집니다.</p>
+</div>
+</div>
+</div>
+<section class="space-y-4">
+<div class="flex justify-between items-center px-2">
+<h3 class="text-[0.75rem] font-bold uppercase tracking-widest text-outline">Guide Samples</h3>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 -mx-2 px-2 scrollbar-hide">
+<div class="min-w-[140px] aspect-[1/1] bg-surface-container-low rounded-lg overflow-hidden relative shadow-sm">
+<img alt="Sample face photo" class="w-full h-full object-cover" data-alt="Professional close-up portrait of a woman with clean skin and neutral background for facial analysis" src="/stitch/_4/screen.png"/>
+<div class="absolute bottom-2 left-2 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full text-[10px] font-bold">Face View</div>
+</div>
+<div class="min-w-[140px] aspect-[1/1] bg-surface-container-low rounded-lg overflow-hidden relative shadow-sm">
+<img alt="Sample body photo" class="w-full h-full object-cover" data-alt="Full body shot of a woman in minimalist clothing standing against a plain soft white wall for silhouette analysis" src="/stitch/_4/screen.png"/>
+<div class="absolute bottom-2 left-2 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full text-[10px] font-bold">Full Body</div>
+</div>
+<div class="min-w-[140px] aspect-[1/1] bg-surface-container-low rounded-lg overflow-hidden relative shadow-sm flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-error text-3xl mb-2" data-icon="block">block</span>
+<span class="text-[10px] text-center font-medium">No Sunglasses<br/>or Masks</span>
+</div>
+</div>
+</section>
+<div class="mt-8">
+<button class="w-full bg-primary-container text-on-primary-container py-5 rounded-full font-bold text-lg shadow-[0_12px_24px_rgba(255,177,238,0.3)] active:scale-95 transition-all flex items-center justify-center gap-2">
+                분석 시작하기
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9fa]/80 backdrop-blur-2xl border-t border-[#d3c2cc]/10 shadow-[0_-10px_40px_rgba(27,28,29,0.04)] rounded-t-[3rem]">
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#FFB1EE] text-[#88487d] rounded-full px-4 py-2 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Diagnosis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="favorite">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="rule">rule</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Checklist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">My Page</span>
+</a>
+</nav>
+</body></html>

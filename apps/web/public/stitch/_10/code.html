@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+            font-weight: 700;
+        }
+        body { font-family: 'Pretendard', 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f2f0f1",
+                      "surface-container": "#efedee",
+                      "primary": "#88487d",
+                      "surface-tint": "#88487d",
+                      "background": "#fbf9fa",
+                      "secondary-fixed-dim": "#9ecee2",
+                      "primary-fixed-dim": "#fbaeea",
+                      "on-tertiary-container": "#3d5d16",
+                      "on-surface-variant": "#4f434b",
+                      "tertiary": "#47681f",
+                      "secondary-fixed": "#baeaff",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dbd9da",
+                      "on-surface": "#1b1c1d",
+                      "primary-fixed": "#ffd7f3",
+                      "surface-variant": "#e4e2e3",
+                      "on-primary-container": "#7c3e73",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#d3c2cc",
+                      "inverse-primary": "#fbaeea",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface": "#fbf9fa",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#001f29",
+                      "inverse-surface": "#303031",
+                      "outline": "#81737c",
+                      "on-tertiary-fixed-variant": "#304f06",
+                      "on-secondary-fixed-variant": "#194c5e",
+                      "tertiary-fixed": "#c7ef96",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#6c3064",
+                      "on-background": "#1b1c1d",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#fbf9fa",
+                      "surface-container-low": "#f5f3f4",
+                      "on-tertiary-fixed": "#102000",
+                      "secondary": "#356476",
+                      "tertiary-container": "#afd680",
+                      "on-secondary-container": "#3b6a7c",
+                      "tertiary-fixed-dim": "#acd37d",
+                      "surface-container-high": "#e9e8e9",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#ffb1ee",
+                      "surface-container-highest": "#e4e2e3",
+                      "secondary-container": "#baeaff",
+                      "on-primary-fixed": "#390035"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              }
+            },
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9fa]/60 backdrop-blur-xl flex justify-between items-center px-6 h-16 shadow-[0_4px_40px_rgba(27,28,29,0.04)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#88487d] text-2xl" data-icon="crown">crown</span>
+<h1 class="text-xl font-bold text-black tracking-widest uppercase font-['Plus_Jakarta_Sans']">MarryTone</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="pt-24 px-6 space-y-10">
+<!-- Editorial Header -->
+<div class="text-center space-y-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary font-['Manrope']">Couple Agreement Board</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">우리만의 웨딩 보드</h2>
+<p class="text-on-surface-variant/70 text-sm leading-relaxed">서로의 취향을 확인하고<br/>가장 아름다운 결정을 함께 내려보세요.</p>
+</div>
+<!-- Agreement Section (High Priority Bento Grid) -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h3 class="text-xl font-bold">합의된 스타일</h3>
+<span class="text-[10px] font-bold uppercase text-primary-fixed-dim bg-primary px-3 py-1 rounded-full">MATCHED</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 relative h-48 rounded-xl overflow-hidden bg-secondary-container/30">
+<img alt="" class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="elegant minimal outdoor wedding reception with white flowers and soft warm sunset lighting" src="/stitch/_10/screen.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-[10px] font-bold uppercase tracking-widest opacity-80">Venue Style</p>
+<p class="font-bold text-lg">야외 가든 웨딩</p>
+</div>
+<div class="absolute top-4 right-4 flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="profile portrait of a smiling young woman with natural makeup" src="/stitch/_10/screen.png"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-secondary-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="profile portrait of a smiling young man in a linen shirt" src="/stitch/_10/screen.png"/>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<div>
+<p class="text-[10px] font-bold uppercase text-on-surface-variant">Vibe</p>
+<p class="font-bold">내추럴 &amp; 무드</p>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-primary-container/20 flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="palette">palette</span>
+<div>
+<p class="text-[10px] font-bold uppercase text-on-surface-variant">Main Color</p>
+<p class="font-bold">웜 피치 핑크</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Picks Comparison (Asymmetric Layout) -->
+<section class="space-y-6">
+<h3 class="text-xl font-bold">서로의 Top Picks</h3>
+<div class="space-y-8">
+<!-- My Picks -->
+<div class="relative pl-6 border-l-2 border-primary-container/50">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="profile of a woman" src="/stitch/_10/screen.png"/>
+</div>
+<span class="text-sm font-bold">민지의 픽</span>
+</div>
+<div class="flex overflow-x-auto pb-4 gap-4 no-scrollbar">
+<div class="min-w-[160px] space-y-2">
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden relative group">
+<img alt="" class="w-full h-full object-cover" data-alt="luxurious minimal white wedding dress detail with silk texture" src="/stitch/_10/screen.png"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<p class="text-xs font-bold text-center">미니멀 실크 드레스</p>
+</div>
+<div class="min-w-[160px] space-y-2 translate-y-4">
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover" data-alt="modern floral centerpiece with pastel flowers on a wooden table" src="/stitch/_10/screen.png"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<p class="text-xs font-bold text-center">와일드 플라워 디렉팅</p>
+</div>
+</div>
+</div>
+<!-- Partner's Picks -->
+<div class="relative pr-6 border-r-2 border-secondary-container/50 text-right">
+<div class="flex items-center justify-end gap-3 mb-4">
+<span class="text-sm font-bold">준호의 픽</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="profile of a man" src="/stitch/_10/screen.png"/>
+</div>
+</div>
+<div class="flex overflow-x-auto pb-4 gap-4 no-scrollbar flex-row-reverse">
+<div class="min-w-[160px] space-y-2">
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover" data-alt="modern industrial wedding venue with exposed brick and warm string lights" src="/stitch/_10/screen.png"/>
+<button class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<p class="text-xs font-bold text-center">인더스트리얼 홀</p>
+</div>
+<div class="min-w-[160px] space-y-2 translate-y-4">
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover" data-alt="close up of a modern sleek black tuxedo with satin lapels" src="/stitch/_10/screen.png"/>
+<button class="absolute top-2 left-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<p class="text-xs font-bold text-center">클래식 턱시도</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Community/Interaction section -->
+<section class="space-y-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h4 class="font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="forum">forum</span>
+                        메모 남기기
+                    </h4>
+<span class="text-[10px] font-bold text-on-surface-variant/40">TODAY</span>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="profile" src="/stitch/_10/screen.png"/>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-2xl rounded-tl-none p-3 text-sm">
+                        야외 결혼식 할 때 비 오면 어떡하지? 걱정돼! ☔️
+                    </div>
+</div>
+<div class="flex gap-3 flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-secondary-container shrink-0 overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="profile" src="/stitch/_10/screen.png"/>
+</div>
+<div class="flex-1 bg-secondary-container/20 rounded-2xl rounded-tr-none p-3 text-sm text-right">
+                        통창 유리 홀이 있는 곳으로 알아보자! 그럼 느낌 살릴 수 있을 거야.
+                    </div>
+</div>
+<div class="pt-4 border-t border-outline-variant/5">
+<div class="flex items-center bg-surface-container-low rounded-full px-4 py-2">
+<input class="bg-transparent border-none focus:ring-0 text-sm flex-1" placeholder="의견을 남겨주세요..." type="text"/>
+<button class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white active:scale-95 duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9fa]/80 backdrop-blur-2xl shadow-[0_-10px_40px_rgba(27,28,29,0.04)] border-t border-[#d3c2cc]/10 rounded-t-[3rem]">
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#FFB1EE] text-[#88487d] rounded-full px-4 py-2 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Diagnosis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Checklist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">My Page</span>
+</a>
+</nav>
+<!-- Floating Action Button - Supressed based on context but adding a subtle 'Add Pick' button for board interaction -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

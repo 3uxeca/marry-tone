@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MarryTone - 나의 보관함</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f1",
+                        "surface-container": "#efedee",
+                        "primary": "#88487d",
+                        "surface-tint": "#88487d",
+                        "background": "#fbf9fa",
+                        "secondary-fixed-dim": "#9ecee2",
+                        "primary-fixed-dim": "#fbaeea",
+                        "on-tertiary-container": "#3d5d16",
+                        "on-surface-variant": "#4f434b",
+                        "tertiary": "#47681f",
+                        "secondary-fixed": "#baeaff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbd9da",
+                        "on-surface": "#1b1c1d",
+                        "primary-fixed": "#ffd7f3",
+                        "surface-variant": "#e4e2e3",
+                        "on-primary-container": "#7c3e73",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d3c2cc",
+                        "inverse-primary": "#fbaeea",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001f29",
+                        "inverse-surface": "#303031",
+                        "outline": "#81737c",
+                        "on-tertiary-fixed-variant": "#304f06",
+                        "on-secondary-fixed-variant": "#194c5e",
+                        "tertiary-fixed": "#c7ef96",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#6c3064",
+                        "on-background": "#1b1c1d",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9fa",
+                        "surface-container-low": "#f5f3f4",
+                        "on-tertiary-fixed": "#102000",
+                        "secondary": "#356476",
+                        "tertiary-container": "#afd680",
+                        "on-secondary-container": "#3b6a7c",
+                        "tertiary-fixed-dim": "#acd37d",
+                        "surface-container-high": "#e9e8e9",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ffb1ee",
+                        "surface-container-highest": "#e4e2e3",
+                        "secondary-container": "#baeaff",
+                        "on-primary-fixed": "#390035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9fa]/60 dark:bg-slate-950/60 backdrop-blur-xl bg-gradient-to-b from-[#fbf9fa] to-transparent shadow-[0_4px_40px_rgba(27,28,29,0.04)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#88487d] dark:text-pink-300">crown</span>
+<h1 class="text-xl font-bold text-black dark:text-white tracking-widest uppercase font-['Plus_Jakarta_Sans','Pretendard']">MarryTone</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 hover:opacity-70 transition-opacity active:scale-95 duration-200">notifications</span>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-32 px-6">
+<!-- Editorial Title -->
+<section class="mb-8">
+<h2 class="text-[2rem] font-bold tracking-tight text-on-surface mb-2 font-['Plus_Jakarta_Sans']">나의 보관함</h2>
+<p class="text-on-surface-variant leading-relaxed opacity-70">당신이 꿈꾸는 완벽한 순간들을 모아보세요.</p>
+</section>
+<!-- Category Tabs (Horizontal Scroll) -->
+<nav class="flex gap-4 mb-8 overflow-x-auto hide-scrollbar -mx-6 px-6">
+<button class="flex-none px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-bold text-sm transition-all active:scale-95">전체</button>
+<button class="flex-none px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full font-bold text-sm hover:bg-surface-container-high transition-all active:scale-95">드레스</button>
+<button class="flex-none px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full font-bold text-sm hover:bg-surface-container-high transition-all active:scale-95">베뉴</button>
+<button class="flex-none px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-full font-bold text-sm hover:bg-surface-container-high transition-all active:scale-95">컨셉</button>
+</nav>
+<!-- Asymmetric Bento-Inspired Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Long Card -->
+<div class="col-span-1 row-span-2 group relative overflow-hidden rounded-lg bg-surface-container-lowest shadow-[0_4px_24px_rgba(27,28,29,0.02)] border border-outline-variant/10">
+<img alt="Wedding Dress" class="w-full h-[320px] object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant minimalist silk wedding dress hanging in a bright luxury boutique with soft morning sunlight" src="/stitch/_5/screen.png"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-full text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<span class="text-[0.75rem] font-bold text-primary tracking-widest uppercase">DRESS</span>
+<h3 class="text-sm font-bold text-on-surface mt-1">실크 머메이드 드레스</h3>
+</div>
+</div>
+<!-- Square Card -->
+<div class="col-span-1 group relative overflow-hidden rounded-lg bg-surface-container-lowest shadow-[0_4px_24px_rgba(27,28,29,0.02)] border border-outline-variant/10">
+<img alt="Wedding Venue" class="w-full h-[180px] object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern indoor wedding venue with high ceilings and luxury floral arrangements in soft pastel tones" src="/stitch/_5/screen.png"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-full text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<span class="text-[0.75rem] font-bold text-primary tracking-widest uppercase">VENUE</span>
+<h3 class="text-sm font-bold text-on-surface mt-1">그랜드 하얏트 가든</h3>
+</div>
+</div>
+<!-- Square Card 2 -->
+<div class="col-span-1 group relative overflow-hidden rounded-lg bg-surface-container-lowest shadow-[0_4px_24px_rgba(27,28,29,0.02)] border border-outline-variant/10">
+<img alt="Wedding Concept" class="w-full h-[180px] object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Artistic flatlay of wedding stationery and gold rings on textured off-white paper with organic shadows" src="/stitch/_5/screen.png"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-full text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<span class="text-[0.75rem] font-bold text-primary tracking-widest uppercase">CONCEPT</span>
+<h3 class="text-sm font-bold text-on-surface mt-1">비정형 미니멀리즘</h3>
+</div>
+</div>
+<!-- Wide Card -->
+<div class="col-span-2 group relative overflow-hidden rounded-lg bg-surface-container-lowest shadow-[0_4px_24px_rgba(27,28,29,0.02)] border border-outline-variant/10">
+<img alt="Table Setting" class="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Luxury wedding table setting with sky blue napkins, crystal glasses, and soft pink floral centerpieces" src="/stitch/_5/screen.png"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-full text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
+<span class="text-[0.75rem] font-bold tracking-widest uppercase text-primary-container">ATMOSPHERE</span>
+<h3 class="text-lg font-bold mt-1">스카이 블루 가든 파티</h3>
+</div>
+</div>
+<!-- Single Square -->
+<div class="col-span-1 group relative overflow-hidden rounded-lg bg-surface-container-lowest shadow-[0_4px_24px_rgba(27,28,29,0.02)] border border-outline-variant/10">
+<img alt="Jewelry" class="w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of a pair of elegant diamond earrings on a soft velvet surface with warm spotlight" src="/stitch/_5/screen.png"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-full text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<span class="text-[0.75rem] font-bold text-primary tracking-widest uppercase">ACCESSORY</span>
+<h3 class="text-sm font-bold text-on-surface mt-1">클래식 다이아몬드 피어스</h3>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9fa]/80 dark:bg-slate-900/80 backdrop-blur-2xl border-t border-[#d3c2cc]/10 shadow-[0_-10px_40px_rgba(27,28,29,0.04)] rounded-t-[3rem]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard'] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard'] mt-1">Diagnosis</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#FFB1EE] dark:bg-[#88487d] text-[#88487d] dark:text-[#FFB1EE] rounded-full px-4 py-2 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard'] mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">rule</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard'] mt-1">Checklist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard'] mt-1">My Page</span>
+</a>
+</nav>
+</body></html>

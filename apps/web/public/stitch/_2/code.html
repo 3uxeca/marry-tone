@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MarryTone - Diagnosis Gate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+            font-weight: 700;
+        }
+        body {
+            font-family: 'Pretendard', 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f1",
+                        "surface-container": "#efedee",
+                        "primary": "#88487d",
+                        "surface-tint": "#88487d",
+                        "background": "#fbf9fa",
+                        "secondary-fixed-dim": "#9ecee2",
+                        "primary-fixed-dim": "#fbaeea",
+                        "on-tertiary-container": "#3d5d16",
+                        "on-surface-variant": "#4f434b",
+                        "tertiary": "#47681f",
+                        "secondary-fixed": "#baeaff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbd9da",
+                        "on-surface": "#1b1c1d",
+                        "primary-fixed": "#ffd7f3",
+                        "surface-variant": "#e4e2e3",
+                        "on-primary-container": "#7c3e73",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d3c2cc",
+                        "inverse-primary": "#fbaeea",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001f29",
+                        "inverse-surface": "#303031",
+                        "outline": "#81737c",
+                        "on-tertiary-fixed-variant": "#304f06",
+                        "on-secondary-fixed-variant": "#194c5e",
+                        "tertiary-fixed": "#c7ef96",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#6c3064",
+                        "on-background": "#1b1c1d",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9fa",
+                        "surface-container-low": "#f5f3f4",
+                        "on-tertiary-fixed": "#102000",
+                        "secondary": "#356476",
+                        "tertiary-container": "#afd680",
+                        "on-secondary-container": "#3b6a7c",
+                        "tertiary-fixed-dim": "#acd37d",
+                        "surface-container-high": "#e9e8e9",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ffb1ee",
+                        "surface-container-highest": "#e4e2e3",
+                        "secondary-container": "#baeaff",
+                        "on-primary-fixed": "#390035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center justify-between overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9fa]/60 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full shadow-[0_4px_40px_rgba(27,28,29,0.04)] bg-gradient-to-b from-[#fbf9fa] to-transparent">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#88487d]" data-icon="crown">crown</span>
+<h1 class="text-xl font-bold text-black tracking-widest uppercase font-['Plus_Jakarta_Sans']">MarryTone</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-md mx-auto flex flex-col items-center justify-center px-8 pt-24 pb-32">
+<!-- Editorial Decorative Element -->
+<div class="relative w-full aspect-[4/5] mb-12 rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover grayscale-[20%] sepia-[10%] brightness-105" data-alt="Dreamy wedding venue with soft pink floral arrangements and airy white fabric drapes in soft natural sunlight" src="/stitch/_2/screen.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#fbf9fa] via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.2em] text-white bg-primary/40 backdrop-blur-md px-3 py-1 rounded-full mb-3 inline-block">Style Guide</span>
+<p class="text-white text-lg font-medium leading-tight">당신만의 무드를 찾는<br/>첫 번째 발걸음</p>
+</div>
+</div>
+<!-- Question Section -->
+<div class="w-full text-center mb-12">
+<h2 class="text-[2rem] font-bold leading-tight tracking-tight text-on-surface mb-4">
+                이미 진행한 스타일<br/>진단 데이터가 있나요?
+            </h2>
+<p class="text-on-surface-variant text-sm font-medium opacity-70">
+                기존 데이터를 불러오거나 새로 시작할 수 있습니다.
+            </p>
+</div>
+<!-- Options Bento Stack -->
+<div class="w-full space-y-4">
+<!-- Option 1: Load Data -->
+<button class="w-full group bg-surface-container-lowest p-6 rounded-xl flex items-center justify-between border border-outline-variant/10 shadow-[0_10px_40px_rgba(27,28,29,0.02)] active:scale-95 transition-all duration-300">
+<div class="flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<p class="text-[0.7rem] font-bold text-secondary tracking-widest uppercase mb-0.5">Existing User</p>
+<p class="text-on-surface font-bold text-base">네, 데이터가 있어요</p>
+<p class="text-on-surface-variant text-xs">(데이터 불러오기)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Option 2: Start New -->
+<button class="w-full group bg-primary-container p-6 rounded-xl flex items-center justify-between shadow-[0_20px_50px_rgba(136,72,125,0.15)] active:scale-95 transition-all duration-300">
+<div class="flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="magic_button">magic_button</span>
+</div>
+<div>
+<p class="text-[0.7rem] font-bold text-on-primary-container tracking-widest uppercase mb-0.5">New Journey</p>
+<p class="text-on-primary-container font-bold text-base">아니요, 지금 시작할게요</p>
+<p class="text-on-primary-container text-xs opacity-80">(진단 시작하기)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-primary-container group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed as this is a decision-gate/transactional screen, but keeping shell for semantic hierarchy if needed - however, per instructions "Suppress the navigation shell if the page intent is: Task-Focused/Linear") -->
+<!-- Applying suppression as per "The Destination Rule" - this is an onboarding gate -->
+<!-- Floating Help Button (Optional but consistent with editorial style) -->
+<div class="fixed bottom-8 right-6">
+<button class="w-14 h-14 bg-surface-container-lowest shadow-xl rounded-full flex items-center justify-center border border-outline-variant/10 active:scale-90 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="help">help</span>
+</button>
+</div>
+</body></html>

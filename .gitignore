@@ -13,4 +13,3 @@ coverage/
 .agents/
 __pycache__/
 .venv/
-apps/web/public/stitch/*/code.html

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MarryTone - 퍼스널 컬러 진단 결과</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+        body { font-family: 'Pretendard', 'Inter', sans-serif; }
+        .font-headline { font-family: 'Manrope', 'Pretendard', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .signature-glow {
+            background: linear-gradient(135deg, #88487d 0%, #ffb1ee 100%);
+        }
+        .tonal-transition {
+            background: #f9f9f9;
+        }
+        .tonal-transition-alt {
+            background: #f3f3f3;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1a1c1c",
+                      "surface": "#f9f9f9",
+                      "on-secondary-container": "#09657f",
+                      "inverse-primary": "#fbaeea",
+                      "tertiary-fixed-dim": "#acd37d",
+                      "outline-variant": "#d3c2cc",
+                      "primary-container": "#ffb1ee",
+                      "primary": "#88487d",
+                      "surface-dim": "#dadada",
+                      "secondary-container": "#9ae1ff",
+                      "secondary-fixed-dim": "#89d0ed",
+                      "inverse-surface": "#2f3131",
+                      "secondary": "#0c6780",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#102000",
+                      "on-secondary-fixed-variant": "#004d62",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-fixed-variant": "#304f06",
+                      "on-primary-fixed": "#390035",
+                      "tertiary": "#47681f",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary-container": "#3d5d16",
+                      "background": "#f9f9f9",
+                      "primary-fixed": "#ffd7f3",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "outline": "#81737c",
+                      "surface-variant": "#e2e2e2",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#eeeeee",
+                      "secondary-fixed": "#baeaff",
+                      "on-primary-container": "#7c3e73",
+                      "on-secondary-fixed": "#001f29",
+                      "surface-container-low": "#f3f3f3",
+                      "inverse-on-surface": "#f1f1f1",
+                      "tertiary-container": "#afd680",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#fbaeea",
+                      "on-surface-variant": "#4f434b",
+                      "on-primary-fixed-variant": "#6c3064",
+                      "tertiary-fixed": "#c7ef96",
+                      "surface-bright": "#f9f9f9",
+                      "on-background": "#1a1c1c",
+                      "surface-tint": "#88487d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              }
+            },
+          }
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-container/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-sm shadow-stone-200/50 dark:shadow-none h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#88487d]" data-icon="crown">crown</span>
+<span class="font-headline font-black tracking-tighter text-xl text-stone-900">MarryTone</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-stone-400 hover:opacity-70 transition-opacity cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-stone-400 hover:opacity-70 transition-opacity cursor-pointer" data-icon="download">download</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-12">
+<!-- Result Header Hero -->
+<section class="space-y-6 text-center">
+<div class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-[10px] font-bold tracking-[0.05em] uppercase">
+                PERSONAL COLOR REPORT
+            </div>
+<div class="relative inline-block">
+<div class="absolute -inset-4 bg-primary-container/20 rounded-full blur-3xl"></div>
+<h1 class="relative text-4xl font-headline font-bold tracking-tight text-on-surface">
+                    Summer Cool <span class="text-primary">Mute</span>
+</h1>
+</div>
+<p class="text-on-surface-variant leading-relaxed max-w-sm mx-auto">
+                김지우님의 피부톤은 부드럽고 차분한 안갯빛을 머금은 <br/><strong>여름 쿨 뮤트</strong> 타입으로 분석되었습니다.
+            </p>
+</section>
+<!-- Main Palette Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="col-span-2 aspect-[16/9] rounded-xl overflow-hidden shadow-sm shadow-stone-200/50 relative">
+<img class="w-full h-full object-cover" data-alt="Soft hazy aesthetic photography of a serene morning landscape with muted lavender and grey tones, high-end editorial style" src="/stitch/_6/screen.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-6 text-white">
+<span class="text-[10px] tracking-widest opacity-80 uppercase">Mood Inspiration</span>
+<h3 class="text-lg font-bold">부드러운 우아함, 서머 뮤트</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-4 border border-on-surface/5">
+<h4 class="text-xs font-bold tracking-widest text-primary uppercase">Best Colors</h4>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square rounded-lg bg-[#b29f9d]" title="Dry Rose"></div>
+<div class="aspect-square rounded-lg bg-[#95a3b3]" title="Fog Blue"></div>
+<div class="aspect-square rounded-lg bg-[#8b8589]" title="Taupe Grey"></div>
+<div class="aspect-square rounded-lg bg-[#d8c3cb]" title="Misty Pink"></div>
+<div class="aspect-square rounded-lg bg-[#6a7b83]" title="Ash Blue"></div>
+<div class="aspect-square rounded-lg bg-[#cdc7c2]" title="Soft Sand"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-4 border border-on-surface/5">
+<h4 class="text-xs font-bold tracking-widest text-on-surface-variant uppercase">Analysis</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-stone-400">HUE (색상)</span>
+<span class="font-bold">Cool (쿨)</span>
+</div>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-3/4"></div>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-stone-400">SATURATION (채도)</span>
+<span class="font-bold">Low-Mid (중저)</span>
+</div>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/60 w-1/3"></div>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-stone-400">BRIGHTNESS (명도)</span>
+<span class="font-bold">Middle (중)</span>
+</div>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-stone-400 w-1/2"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Section -->
+<section class="space-y-8">
+<div class="flex items-end justify-between">
+<h2 class="text-2xl font-headline font-bold">Best &amp; Worst</h2>
+<div class="text-[10px] text-stone-400 uppercase tracking-widest">Visual Comparison</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<!-- Best -->
+<div class="space-y-4">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Fashion model with soft features wearing a muted dusty rose silk blouse, ethereal lighting, minimalist background" src="/stitch/_6/screen.png"/>
+<div class="absolute top-4 left-4 bg-primary-container text-on-primary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
+                            Best Match
+                        </div>
+</div>
+<div class="space-y-1">
+<p class="text-sm font-bold">드라이 로즈 &amp; 더스티 블루</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">이목구비를 부드럽게 살려주며 고급스러운 분위기를 완성합니다.</p>
+</div>
+</div>
+<!-- Worst -->
+<div class="space-y-4">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden grayscale-[0.2] opacity-80">
+<img class="w-full h-full object-cover" data-alt="Bright neon orange and heavy black fabric swatch texture with high contrast lighting" src="/stitch/_6/screen.png"/>
+<div class="absolute top-4 left-4 bg-stone-800 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
+                            Avoid
+                        </div>
+</div>
+<div class="space-y-1">
+<p class="text-sm font-bold text-stone-500">비비드 오렌지 &amp; 블랙</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">피부의 노란기를 강조하거나 얼굴빛을 어둡게 누를 수 있습니다.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Style Guide Chips -->
+<section class="bg-surface-container-low -mx-6 px-6 py-12 space-y-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-center text-on-surface-variant">Recommended Styling</h3>
+<div class="flex flex-wrap justify-center gap-2">
+<span class="px-5 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-medium border border-on-surface/5">#매트한질감</span>
+<span class="px-5 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-medium border border-on-surface/5">#실버쥬얼리</span>
+<span class="px-5 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-medium border border-on-surface/5">#MLBB립</span>
+<span class="px-5 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-medium border border-on-surface/5">#애쉬그레이헤어</span>
+<span class="px-5 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-medium border border-on-surface/5">#리넨소재</span>
+</div>
+<div class="pt-4 flex justify-center">
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-bold text-sm signature-glow hover:opacity-90 transition-all active:scale-95">
+                    맞춤형 스타일링 제안받기
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Coach Note Card -->
+<section class="bg-secondary-fixed/20 p-8 rounded-[2rem] relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" data-icon="format_quote">format_quote</span>
+</div>
+<div class="relative space-y-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover ring-2 ring-white" data-alt="Portrait of a professional female fashion coach with warm smile, studio lighting, neutral background" src="/stitch/_6/screen.png"/>
+<div>
+<p class="text-[10px] text-secondary font-bold tracking-widest uppercase">Expert's Note</p>
+<p class="text-xs font-bold">수석 컬러리스트 이소연</p>
+</div>
+</div>
+<p class="text-sm leading-[1.8] text-on-surface/80">
+                    "여름 뮤트 타입은 '조화'가 가장 중요합니다. 너무 선명하거나 차가운 색보다는 적당히 회색이 섞인 차분한 톤을 선택했을 때 본연의 우아함이 가장 잘 살아납니다. 화장품은 글로시한 제형보다 매트하거나 보송한 질감을 추천드려요."
+                </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.04)] border-t border-stone-100/10">
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-stone-600 transition-all">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#88487d] bg-[#ffb1ee]/10 rounded-full px-4 py-1">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Style</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-stone-600 transition-all">
+<span class="material-symbols-outlined" data-icon="content_cut">content_cut</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Coach</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-stone-600 transition-all">
+<span class="material-symbols-outlined" data-icon="collections">collections</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Lookbook</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-stone-600 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">My</span>
+</div>
+</nav>
+</body></html>

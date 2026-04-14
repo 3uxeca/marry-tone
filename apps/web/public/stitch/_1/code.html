@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f1",
+                        "surface-container": "#efedee",
+                        "primary": "#88487d",
+                        "surface-tint": "#88487d",
+                        "background": "#fbf9fa",
+                        "secondary-fixed-dim": "#9ecee2",
+                        "primary-fixed-dim": "#fbaeea",
+                        "on-tertiary-container": "#3d5d16",
+                        "on-surface-variant": "#4f434b",
+                        "tertiary": "#47681f",
+                        "secondary-fixed": "#baeaff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbd9da",
+                        "on-surface": "#1b1c1d",
+                        "primary-fixed": "#ffd7f3",
+                        "surface-variant": "#e4e2e3",
+                        "on-primary-container": "#7c3e73",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d3c2cc",
+                        "inverse-primary": "#fbaeea",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001f29",
+                        "inverse-surface": "#303031",
+                        "outline": "#81737c",
+                        "on-tertiary-fixed-variant": "#304f06",
+                        "on-secondary-fixed-variant": "#194c5e",
+                        "tertiary-fixed": "#c7ef96",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#6c3064",
+                        "on-background": "#1b1c1d",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9fa",
+                        "surface-container-low": "#f5f3f4",
+                        "on-tertiary-fixed": "#102000",
+                        "secondary": "#356476",
+                        "tertiary-container": "#afd680",
+                        "on-secondary-container": "#3b6a7c",
+                        "tertiary-fixed-dim": "#acd37d",
+                        "surface-container-high": "#e9e8e9",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ffb1ee",
+                        "surface-container-highest": "#e4e2e3",
+                        "secondary-container": "#baeaff",
+                        "on-primary-fixed": "#390035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans", "Pretendard"],
+                        "body": ["Manrope", "Pretendard"],
+                        "label": ["Manrope", "Pretendard"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-effect { backdrop-filter: blur(20px); background-color: rgba(251, 249, 250, 0.6); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<!-- Top Bar (Suppressed based on Transactional/Onboarding context, but keeping Brand Presence) -->
+<header class="fixed top-0 w-full z-50 flex justify-center items-center h-20 px-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="crown">crown</span>
+<h1 class="text-xl font-bold text-black tracking-widest uppercase font-headline">MarryTone</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative h-screen w-full flex flex-col justify-end">
+<!-- Hero Background Image with Intentional Asymmetry and Soft Overlays -->
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img alt="Elegant Wedding Portrait" class="w-full h-full object-cover scale-110" data-alt="Dreamy close-up of a bride in a minimalist silk wedding dress, soft natural window light, warm tones, high-end editorial fashion photography style" src="/stitch/_1/screen.png"/>
+<!-- Soulful Gradients for Atmosphere -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/20 to-transparent"></div>
+<!-- Floating Decorative Element (Asymmetry) -->
+<div class="absolute top-1/4 -right-10 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-1/3 -left-20 w-80 h-80 bg-secondary-container/30 rounded-full blur-3xl"></div>
+</div>
+<!-- Editorial Content Section -->
+<section class="relative z-10 px-8 pb-16 pt-24 bg-gradient-to-t from-surface via-surface/95 to-transparent">
+<div class="max-w-md mx-auto space-y-10">
+<!-- Label (Seoul Minimalist Metadata Style) -->
+<div class="inline-block px-3 py-1 bg-secondary-container/50 rounded-full">
+<span class="text-[0.7rem] font-bold tracking-[0.1em] text-on-secondary-container uppercase font-label">The Ethereal Curator</span>
+</div>
+<!-- Headline (Editorial Voice) -->
+<div class="space-y-4">
+<h2 class="text-[2.5rem] leading-[1.1] font-bold tracking-tight text-on-surface font-headline">
+                        가장 나다운<br/>
+                        웨딩 스타일을<br/>
+                        찾는 여정
+                    </h2>
+<p class="text-lg leading-[1.7] text-on-surface/70 font-body max-w-[85%]">
+                        AI가 당신만의 퍼스널 컬러와 체형을 분석하여 완벽한 웨딩 룩을 제안해 드립니다.
+                    </p>
+</div>
+<!-- Memory Carousel Hint (Bento/Minimalist Layout for Onboarding Features) -->
+<div class="flex gap-4 overflow-x-hidden pt-4">
+<div class="min-w-[140px] aspect-[4/5] bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-5 flex flex-col justify-between shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+<p class="text-xs font-bold leading-tight">퍼스널 컬러<br/>진단</p>
+</div>
+<div class="min-w-[140px] aspect-[4/5] bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-5 flex flex-col justify-between shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary" data-icon="body_system">body_system</span>
+<p class="text-xs font-bold leading-tight">체형별 핏<br/>가이드</p>
+</div>
+<div class="min-w-[140px] aspect-[4/5] bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-5 flex flex-col justify-between shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary-container" data-icon="auto_awesome">auto_awesome</span>
+<p class="text-xs font-bold leading-tight">AI 드레스<br/>매칭</p>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="pt-4">
+<button class="w-full h-16 bg-primary-container hover:opacity-90 active:scale-95 transition-all duration-300 rounded-full flex items-center justify-center gap-2 group">
+<span class="text-on-primary-container font-bold text-lg tracking-wide">시작하기</span>
+<span class="material-symbols-outlined text-on-primary-container transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="mt-6 flex justify-center items-center gap-6">
+<span class="text-[0.7rem] font-bold text-on-surface/40 tracking-widest uppercase font-label">Login with</span>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="chat">chat</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Suppression Logic: BottomNavBar is hidden on Onboarding transactional flow -->
+<!-- Suppression Logic: FAB is hidden on Onboarding transactional flow -->
+</body></html>

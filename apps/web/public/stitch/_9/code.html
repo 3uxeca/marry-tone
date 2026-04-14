@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f1",
+                        "surface-container": "#efedee",
+                        "primary": "#88487d",
+                        "surface-tint": "#88487d",
+                        "background": "#fbf9fa",
+                        "secondary-fixed-dim": "#9ecee2",
+                        "primary-fixed-dim": "#fbaeea",
+                        "on-tertiary-container": "#3d5d16",
+                        "on-surface-variant": "#4f434b",
+                        "tertiary": "#47681f",
+                        "secondary-fixed": "#baeaff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbd9da",
+                        "on-surface": "#1b1c1d",
+                        "primary-fixed": "#ffd7f3",
+                        "surface-variant": "#e4e2e3",
+                        "on-primary-container": "#7c3e73",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d3c2cc",
+                        "inverse-primary": "#fbaeea",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001f29",
+                        "inverse-surface": "#303031",
+                        "outline": "#81737c",
+                        "on-tertiary-fixed-variant": "#304f06",
+                        "on-secondary-fixed-variant": "#194c5e",
+                        "tertiary-fixed": "#c7ef96",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#6c3064",
+                        "on-background": "#1b1c1d",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9fa",
+                        "surface-container-low": "#f5f3f4",
+                        "on-tertiary-fixed": "#102000",
+                        "secondary": "#356476",
+                        "tertiary-container": "#afd680",
+                        "on-secondary-container": "#3b6a7c",
+                        "tertiary-fixed-dim": "#acd37d",
+                        "surface-container-high": "#e9e8e9",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ffb1ee",
+                        "surface-container-highest": "#e4e2e3",
+                        "secondary-container": "#baeaff",
+                        "on-primary-fixed": "#390035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans", "Pretendard"],
+                        "body": ["Manrope", "Pretendard"],
+                        "label": ["Manrope", "Pretendard"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-gradient {
+            background: linear-gradient(135deg, #88487d 0%, #ffb1ee 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9fa]/60 backdrop-blur-xl shadow-[0_4px_40px_rgba(27,28,29,0.04)] bg-gradient-to-b from-[#fbf9fa] to-transparent h-16 px-6 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#88487d]" data-icon="crown">crown</span>
+<h1 class="text-xl font-bold text-black tracking-widest uppercase font-['Plus_Jakarta_Sans']">MarryTone</h1>
+</div>
+<button class="active:scale-95 duration-200 transition-opacity hover:opacity-70">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-24 px-6">
+<!-- Editorial Headline -->
+<section class="mb-10 text-center">
+<p class="text-[0.75rem] font-bold uppercase tracking-[0.2em] text-primary mb-3 font-label">Curated Selection</p>
+<h2 class="text-[2rem] font-bold leading-tight tracking-tight text-on-surface">서연님을 위한<br/>시그니처 웨딩 룩</h2>
+</section>
+<!-- Main Pick: Hero Card (Intentional Asymmetry) -->
+<section class="mb-12 relative">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_40px_80px_rgba(27,28,29,0.06)] relative z-10">
+<div class="aspect-[4/5] w-full overflow-hidden">
+<img alt="Elegant A-line wedding dress with delicate lace detailing and silk fabric in a sunlit high-end bridal boutique" class="w-full h-full object-cover" data-alt="high-end wedding dress editorial, ethereal lighting, soft focus, minimal aesthetic, premium lace and silk details" src="/stitch/_9/screen.png"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[0.7rem] font-bold uppercase tracking-widest text-secondary mb-1">Main Pick</p>
+<h3 class="text-2xl font-bold text-on-surface">에테르알 그레이스</h3>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold">98% MATCH</span>
+</div>
+<p class="text-sm leading-relaxed text-on-surface-variant font-body">
+                        서연님의 맑은 피부톤과 우아한 실루엣을 가장 극대화하는 '클래식 시크' 무드의 드레스입니다. 
+                    </p>
+</div>
+</div>
+<!-- Decorative Sky Blue Element -->
+<div class="absolute -top-4 -right-4 w-32 h-32 bg-secondary-container/40 rounded-full blur-3xl -z-0"></div>
+</section>
+<!-- Style Science: Bento Layout -->
+<section class="mb-12">
+<h4 class="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface mb-6 px-1">Style Science</h4>
+<div class="grid grid-cols-2 gap-4">
+<!-- Palette Theory -->
+<div class="col-span-2 bg-primary-container/10 p-6 rounded-lg border border-primary-container/20">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="palette" data-weight="fill" style="font-variation-settings: 'FILL' 1;">palette</span>
+<p class="font-bold text-sm">Palette Theory</p>
+</div>
+<p class="text-sm leading-relaxed text-on-surface-variant">
+                        부드러운 미색의 오프화이트 톤이 서연님의 '여름 쿨톤' 베이스와 조화를 이루어 안색을 더욱 맑게 밝혀줍니다.
+                    </p>
+</div>
+<!-- Structural Fit -->
+<div class="bg-surface-container-low p-5 rounded-lg">
+<span class="material-symbols-outlined text-secondary mb-2" data-icon="architecture">architecture</span>
+<p class="font-bold text-xs mb-1">Structural Fit</p>
+<p class="text-[11px] leading-snug text-on-surface-variant">브이넥 라인이 목선을 길게 강조하며 세련된 인상을 줍니다.</p>
+</div>
+<!-- Fabric Logic -->
+<div class="bg-surface-container-low p-5 rounded-lg">
+<span class="material-symbols-outlined text-secondary mb-2" data-icon="texture">texture</span>
+<p class="font-bold text-xs mb-1">Fabric Logic</p>
+<p class="text-[11px] leading-snug text-on-surface-variant">고급 미카도 실크의 은은한 광택이 입체감을 형성합니다.</p>
+</div>
+</div>
+</section>
+<!-- Alternative Vibes: Memory Carousel Logic -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6 px-1">
+<h4 class="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface">Alternative Vibes</h4>
+<button class="text-[10px] font-bold text-primary underline underline-offset-4">VIEW ALL</button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar -mx-6 px-6">
+<!-- Alt 1 -->
+<div class="flex-shrink-0 w-48 group">
+<div class="aspect-[1/1] rounded-lg overflow-hidden mb-3 shadow-sm group-active:scale-95 transition-transform duration-300">
+<img alt="Romantic wedding dress with floral appliqué and sheer sleeves in a soft garden setting" class="w-full h-full object-cover" data-alt="romantic wedding dress, floral appliqué, soft pink garden background, ethereal morning light" src="/stitch/_9/screen.png"/>
+</div>
+<p class="text-xs font-bold text-on-surface truncate">로맨틱 가든 레이스</p>
+<p class="text-[10px] text-slate-400">Floral &amp; Romantic</p>
+</div>
+<!-- Alt 2 -->
+<div class="flex-shrink-0 w-60 group">
+<div class="aspect-[4/5] rounded-lg overflow-hidden mb-3 shadow-sm group-active:scale-95 transition-transform duration-300">
+<img alt="Modern minimalist wedding dress with a clean square neckline and high slit in an urban studio" class="w-full h-full object-cover" data-alt="minimalist urban wedding dress, sleek square neckline, high-fashion editorial, clean studio background" src="/stitch/_9/screen.png"/>
+</div>
+<p class="text-xs font-bold text-on-surface truncate">어반 미니멀 실크</p>
+<p class="text-[10px] text-slate-400">Modern &amp; Sleek</p>
+</div>
+<!-- Alt 3 -->
+<div class="flex-shrink-0 w-48 group">
+<div class="aspect-[1/1] rounded-lg overflow-hidden mb-3 shadow-sm group-active:scale-95 transition-transform duration-300">
+<img alt="Bohemian style wedding dress with bell sleeves and tassel details in a desert landscape" class="w-full h-full object-cover" data-alt="bohemian wedding style, tassel details, warm sunset light, desert wedding editorial" src="/stitch/_9/screen.png"/>
+</div>
+<p class="text-xs font-bold text-on-surface truncate">빈티지 보헤미안</p>
+<p class="text-[10px] text-slate-400">Vintage &amp; Unique</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating CTA -->
+<div class="fixed bottom-24 right-6 z-50">
+<button class="editorial-gradient text-white flex items-center gap-2 px-6 py-4 rounded-full shadow-[0_20px_40px_rgba(136,72,125,0.3)] active:scale-90 transition-transform duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-bold tracking-tight">저장하기</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9fa]/80 backdrop-blur-2xl rounded-t-[3rem] border-t border-[#d3c2cc]/10 shadow-[0_-10px_40px_rgba(27,28,29,0.04)]">
+<button class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#FFB1EE] text-[#88487d] rounded-full px-4 py-2 active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Diagnosis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="favorite">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="rule">rule</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">Checklist</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-[#88487d] transition-colors active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Pretendard']">My Page</span>
+</button>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

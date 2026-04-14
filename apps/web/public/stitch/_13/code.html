@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f2f0f1",
+                    "surface-container": "#efedee",
+                    "primary": "#88487d",
+                    "surface-tint": "#88487d",
+                    "background": "#fbf9fa",
+                    "secondary-fixed-dim": "#9ecee2",
+                    "primary-fixed-dim": "#fbaeea",
+                    "on-tertiary-container": "#3d5d16",
+                    "on-surface-variant": "#4f434b",
+                    "tertiary": "#47681f",
+                    "secondary-fixed": "#baeaff",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dbd9da",
+                    "on-surface": "#1b1c1d",
+                    "primary-fixed": "#ffd7f3",
+                    "surface-variant": "#e4e2e3",
+                    "on-primary-container": "#7c3e73",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d3c2cc",
+                    "inverse-primary": "#fbaeea",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface": "#fbf9fa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#001f29",
+                    "inverse-surface": "#303031",
+                    "outline": "#81737c",
+                    "on-tertiary-fixed-variant": "#304f06",
+                    "on-secondary-fixed-variant": "#194c5e",
+                    "tertiary-fixed": "#c7ef96",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#6c3064",
+                    "on-background": "#1b1c1d",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9fa",
+                    "surface-container-low": "#f5f3f4",
+                    "on-tertiary-fixed": "#102000",
+                    "secondary": "#356476",
+                    "tertiary-container": "#afd680",
+                    "on-secondary-container": "#3b6a7c",
+                    "tertiary-fixed-dim": "#acd37d",
+                    "surface-container-high": "#e9e8e9",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#ffb1ee",
+                    "surface-container-highest": "#e4e2e3",
+                    "secondary-container": "#baeaff",
+                    "on-primary-fixed": "#390035"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-pretendard { font-family: 'Manrope', sans-serif; } /* Mapping Pretendard request to Manrope per system instructions */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9fa]/60 backdrop-blur-xl shadow-[0_4px_40px_rgba(27,28,29,0.04)] bg-gradient-to-b from-[#fbf9fa] to-transparent">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#88487d]" data-icon="crown">crown</span>
+<h1 class="text-xl font-bold text-black tracking-widest uppercase font-['Plus_Jakarta_Sans']">MarryTone</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-[#88487d]" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 space-y-8 max-w-md mx-auto">
+<!-- User Profile Section -->
+<section class="flex flex-col items-center text-center space-y-4">
+<div class="relative">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary-container shadow-lg">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a smiling young woman with soft natural lighting, elegant and high-end editorial photography style" src="/stitch/_13/screen.png"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">이지은</h2>
+<p class="text-outline text-sm font-medium tracking-wide uppercase mt-1">Premium Member</p>
+</div>
+</section>
+<!-- Profile Quick Stats / Bento Style -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-primary-container/30 p-5 rounded-lg flex flex-col items-center justify-center space-y-1">
+<span class="material-symbols-outlined text-primary" data-icon="favorite">favorite</span>
+<span class="text-xs font-bold text-on-primary-container uppercase tracking-tighter">Matches</span>
+<span class="text-xl font-bold text-primary">12</span>
+</div>
+<div class="bg-secondary-container/30 p-5 rounded-lg flex flex-col items-center justify-center space-y-1">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-xs font-bold text-on-secondary-container uppercase tracking-tighter">Points</span>
+<span class="text-xl font-bold text-secondary">2,450</span>
+</div>
+</section>
+<!-- Menu List -->
+<section class="bg-surface-container-lowest rounded-xl p-2 shadow-sm">
+<div class="space-y-1">
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<span class="font-semibold text-on-surface">나의 진단 결과</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+<span class="font-semibold text-on-surface">커플 연결 관리</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/40 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="font-semibold text-on-surface">결제 내역</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+<span class="font-semibold text-on-surface">설정</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Promotion Card / Editorial -->
+<section class="relative h-48 rounded-xl overflow-hidden bg-primary shadow-xl group">
+<img alt="Wedding Style Guide" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Ethereal wedding flowers in soft pink and white with dreamlike bokeh background and warm sunlight" src="/stitch/_13/screen.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-6">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-fixed mb-1">Exclusive Content</span>
+<h3 class="text-xl font-bold text-white leading-tight">MarryTone 웨딩 스타일 가이드<br/>지금 확인해보세요.</h3>
+</div>
+</section>
+<!-- Logout Button -->
+<button class="w-full py-4 text-outline font-semibold text-sm hover:text-error transition-colors">
+            로그아웃
+        </button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#fbf9fa]/80 backdrop-blur-2xl flex justify-around items-center px-4 pb-6 pt-3 border-t border-[#d3c2cc]/10 shadow-[0_-10px_40px_rgba(27,28,29,0.04)] rounded-t-[3rem]">
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 active:scale-90 duration-300 ease-out transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 active:scale-90 duration-300 ease-out transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Diagnosis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 active:scale-90 duration-300 ease-out transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 active:scale-90 duration-300 ease-out transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Checklist</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#FFB1EE] text-[#88487d] rounded-full px-4 py-2 active:scale-90 duration-300 ease-out transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">My Page</span>
+</a>
+</nav>
+</body></html>
