@@ -9,3 +9,4 @@
 | Time (KST) | Task | Status | Notes |
 |---|---|---|---|
 | 2026-04-14 19:58 | Assigned work scope fixed | done | 4 routes |
+| 2026-04-14 20:02 | Consensus/Checklist/Coach/My 4 routes stitch iframe 매핑 구현 | done | commit `bab0e53` |

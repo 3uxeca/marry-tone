@@ -35,3 +35,9 @@
   - `apps/web/src/app/coach/page.tsx`
   - `apps/web/src/app/my/page.tsx`
 | 2026-04-14 20:00 | coordinator | phase1/ui-coord | ECC frontend agents `ui-a/ui-b/ui-c` 병렬 투입 | in_progress | 라우트 그룹별 stitch 매핑 진행 |
+| 2026-04-14 20:02 | ui-c | phase1/ui-c | consensus/checklist/coach/my 라우트 stitch 매핑 | done | `bab0e53` |
+| 2026-04-14 20:03 | ui-a | phase1/ui-a | home/diagnosis 라우트 stitch 매핑 | done | `48d0e79` |
+| 2026-04-14 20:04 | ui-b | phase1/ui-b | saved/results/recommendation/comparison stitch 매핑 | done | `60852d7` |
+| 2026-04-14 20:07 | coordinator | phase1/ui-coord | ui-a/ui-b/ui-c 브랜치 통합 | done | merge commit 3건 |
+| 2026-04-14 20:09 | coordinator | phase1/ui-coord | ECC pre-commit 훅 오탐지 발생 및 조치 | done | `_8/code.html` 이미지 URL 패턴 오탐지 -> 외부 이미지 URL 로컬 `screen.png` 치환 |
+| 2026-04-14 20:12 | coordinator | phase1/ui-coord | `@marrytone/web` lint/typecheck/build 검증 | done | build 성공, 기존 stitch preview `<img>` 경고 2건 |
