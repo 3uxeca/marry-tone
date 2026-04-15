@@ -1,33 +1,33 @@
 import { defineRoute, type ContractTypeByName } from "./registry.types";
 
-export type ProfileGetRequest = ContractTypeByName<"ProfileGetRequest">;
-export type ProfileGetResponse = ContractTypeByName<"ProfileGetResponse">;
-export type ProfileUpsertRequest = ContractTypeByName<"ProfileUpsertRequest">;
-export type ProfileUpsertResponse = ContractTypeByName<"ProfileUpsertResponse">;
-export type ProfilePreferencePatchRequest = ContractTypeByName<"ProfilePreferencePatchRequest">;
-export type ProfilePreferencePatchResponse = ContractTypeByName<"ProfilePreferencePatchResponse">;
+export type SubmitDiagnosisGateChoiceRequest = ContractTypeByName<"SubmitDiagnosisGateChoiceRequest">;
+export type SubmitDiagnosisGateChoiceResponse = ContractTypeByName<"SubmitDiagnosisGateChoiceResponse">;
+export type SubmitProfileIntakeRequest = ContractTypeByName<"SubmitProfileIntakeRequest">;
+export type SubmitProfileIntakeResponse = ContractTypeByName<"SubmitProfileIntakeResponse">;
+export type GetProfileChecklistSummaryRequest = ContractTypeByName<"GetProfileChecklistSummaryRequest">;
+export type GetProfileChecklistSummaryResponse = ContractTypeByName<"GetProfileChecklistSummaryResponse">;
 
 export const profileRouteRegistry = {
-  getProfile: defineRoute({
-    routeId: "profile.getProfile",
+  submitDiagnosisGateChoice: defineRoute({
+    routeId: "profile.submitDiagnosisGateChoice",
+    method: "POST",
+    path: "/v1/profile/diagnosis-gate",
+    requestTypeName: "SubmitDiagnosisGateChoiceRequest",
+    responseTypeName: "SubmitDiagnosisGateChoiceResponse",
+  }),
+  submitProfileIntake: defineRoute({
+    routeId: "profile.submitProfileIntake",
+    method: "POST",
+    path: "/v1/profile/diagnosis-intake",
+    requestTypeName: "SubmitProfileIntakeRequest",
+    responseTypeName: "SubmitProfileIntakeResponse",
+  }),
+  getChecklistSummary: defineRoute({
+    routeId: "profile.getChecklistSummary",
     method: "GET",
-    path: "/v1/profile",
-    requestTypeName: "ProfileGetRequest",
-    responseTypeName: "ProfileGetResponse",
-  }),
-  upsertProfile: defineRoute({
-    routeId: "profile.upsertProfile",
-    method: "PUT",
-    path: "/v1/profile",
-    requestTypeName: "ProfileUpsertRequest",
-    responseTypeName: "ProfileUpsertResponse",
-  }),
-  patchPreferences: defineRoute({
-    routeId: "profile.patchPreferences",
-    method: "PATCH",
-    path: "/v1/profile/preferences",
-    requestTypeName: "ProfilePreferencePatchRequest",
-    responseTypeName: "ProfilePreferencePatchResponse",
+    path: "/v1/profile/checklist",
+    requestTypeName: "GetProfileChecklistSummaryRequest",
+    responseTypeName: "GetProfileChecklistSummaryResponse",
   }),
 } as const;
 

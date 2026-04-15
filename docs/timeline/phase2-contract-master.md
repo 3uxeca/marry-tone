@@ -23,3 +23,9 @@
   - `docs/contracts/**`
 - Agent `api`
   - `services/api/src/contracts/**` (contract adapter/types only, no business logic)
+| 2026-04-15 10:13 | coordinator | phase2/contract-coord | ECC agents 투입(`contracts/openapi/api`) | in_progress | P0 계약 병렬 작성 시작 |
+| 2026-04-15 10:16 | openapi | phase2/contract-openapi | P0 OpenAPI 초안 및 모듈-화면 매핑 문서 작성 | done | `ae9297c` |
+| 2026-04-15 10:17 | api | phase2/contract-api | API contract registry 초안 작성 | done | `fc22a40` |
+| 2026-04-15 10:18 | contracts | phase2/contract-contracts | P0 domain contracts 작성 | done | `20433d0` |
+| 2026-04-15 10:20 | coordinator | phase2/contract-coord | 3개 브랜치 병합 후 API registry 타입/경로 정합화 | done | contracts/openapi와 일치하도록 수정 |
+| 2026-04-15 10:24 | coordinator | phase2/contract-coord | `@marrytone/contracts`, `@marrytone/api` 빌드 검증 | done | 모두 성공 |

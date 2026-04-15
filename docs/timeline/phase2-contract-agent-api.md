@@ -9,3 +9,4 @@
 | Time (KST) | Task | Status | Notes |
 |---|---|---|---|
 | 2026-04-15 10:10 | Assigned work scope fixed | done | API contract adapter only |
+| 2026-04-15 10:17 | API contract registry 스캐폴딩 작성 | done | commit `fc22a40` |

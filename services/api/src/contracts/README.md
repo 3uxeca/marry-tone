@@ -19,9 +19,9 @@ Example:
 ```ts
 import { profileRouteRegistry, type RouteRequest, type RouteResponse } from "../contracts";
 
-type UpsertRoute = typeof profileRouteRegistry.upsertProfile;
-type UpsertReq = RouteRequest<UpsertRoute>;
-type UpsertRes = RouteResponse<UpsertRoute>;
+type IntakeRoute = typeof profileRouteRegistry.submitProfileIntake;
+type IntakeReq = RouteRequest<IntakeRoute>;
+type IntakeRes = RouteResponse<IntakeRoute>;
 ```
 
 ## Notes

@@ -1,9 +1,7 @@
-export type ContractNamespace = typeof import("@marrytone/contracts");
-export type ExistingContractTypeName = keyof ContractNamespace & string;
+import type { ContractTypeName, ContractTypeRegistry } from "@marrytone/contracts";
 
-export type ContractTypeByName<TypeName extends string> = TypeName extends ExistingContractTypeName
-  ? ContractNamespace[TypeName]
-  : unknown;
+export type ExistingContractTypeName = ContractTypeName;
+export type ContractTypeByName<TypeName extends ExistingContractTypeName> = ContractTypeRegistry[TypeName];
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -11,8 +9,8 @@ export interface ContractRouteDefinition<
   RouteId extends string,
   Method extends HttpMethod,
   Path extends string,
-  RequestTypeName extends string,
-  ResponseTypeName extends string,
+  RequestTypeName extends ExistingContractTypeName,
+  ResponseTypeName extends ExistingContractTypeName,
   RequestType = ContractTypeByName<RequestTypeName>,
   ResponseType = ContractTypeByName<ResponseTypeName>,
 > {
@@ -29,18 +27,18 @@ export type AnyContractRoute = ContractRouteDefinition<
   string,
   HttpMethod,
   string,
-  string,
-  string,
-  unknown,
-  unknown
+  ExistingContractTypeName,
+  ExistingContractTypeName,
+  ContractTypeByName<ExistingContractTypeName>,
+  ContractTypeByName<ExistingContractTypeName>
 >;
 
 export type RouteRequest<TRoute extends AnyContractRoute> = TRoute extends ContractRouteDefinition<
   string,
   HttpMethod,
   string,
-  string,
-  string,
+  ExistingContractTypeName,
+  ExistingContractTypeName,
   infer RequestType,
   unknown
 >
@@ -51,8 +49,8 @@ export type RouteResponse<TRoute extends AnyContractRoute> = TRoute extends Cont
   string,
   HttpMethod,
   string,
-  string,
-  string,
+  ExistingContractTypeName,
+  ExistingContractTypeName,
   unknown,
   infer ResponseType
 >
@@ -63,8 +61,8 @@ export function defineRoute<
   RouteId extends string,
   Method extends HttpMethod,
   Path extends string,
-  RequestTypeName extends string,
-  ResponseTypeName extends string,
+  RequestTypeName extends ExistingContractTypeName,
+  ResponseTypeName extends ExistingContractTypeName,
 >(
   route: ContractRouteDefinition<RouteId, Method, Path, RequestTypeName, ResponseTypeName>,
 ): ContractRouteDefinition<RouteId, Method, Path, RequestTypeName, ResponseTypeName> {

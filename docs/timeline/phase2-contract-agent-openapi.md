@@ -9,3 +9,4 @@
 | Time (KST) | Task | Status | Notes |
 |---|---|---|---|
 | 2026-04-15 10:10 | Assigned work scope fixed | done | OpenAPI docs only |
+| 2026-04-15 10:16 | OpenAPI P0 스펙/README 작성 | done | commit `ae9297c` |
