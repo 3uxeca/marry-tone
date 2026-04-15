@@ -32,6 +32,78 @@ enum DecisionEventType {
   DISMISSED
 }
 
+enum ProfileSubjectRole {
+  BRIDE
+  GROOM
+}
+
+enum ProfileDiagnosisGateChoice {
+  EXPERIENCED
+  NOT_EXPERIENCED
+}
+
+enum ProfileDiagnosisSourceType {
+  SELF_REPORTED
+  STUDIO_REPORTED
+  AUTO_ANALYZED
+  MANUAL_SURVEY
+}
+
+enum ProfileLowConfidencePolicy {
+  POLICY_C_REUPLOAD_THEN_MANUAL
+}
+
+enum ProfileIntakeStatus {
+  SUBMITTED
+  DIAGNOSIS_IN_PROGRESS
+  COMPLETED
+}
+
+enum ProfileIntakeNextStep {
+  READY_FOR_RECOMMENDATION
+  REUPLOAD_REQUIRED
+  MANUAL_SURVEY_REQUIRED
+}
+
+enum RecommendationRequestType {
+  INITIAL
+  REGENERATE
+}
+
+enum RecommendationGenerationStatus {
+  QUEUED
+  GENERATING
+  COMPLETED
+  FAILED
+}
+
+enum RecommendationExecutionMode {
+  AI_PRIMARY
+  RULE_BASED_FALLBACK
+}
+
+enum RecommendationFallbackPolicy {
+  RULE_BASED_TOP3
+}
+
+enum RecommendationRetryState {
+  NONE
+  RETRYING_ONCE
+  RETRY_EXHAUSTED
+  MANUAL_SELECTION_REQUIRED
+}
+
+enum CoupleConflictResolutionPolicy {
+  POLICY_A
+}
+
+enum CoupleDecisionStatus {
+  PENDING
+  AGREED
+  POLICY_A_APPLIED
+  FINALIZED
+}
+
 model User {
   id                String             @id @default(cuid()) @db.VarChar(191)
   email             String             @unique @db.VarChar(191)
@@ -117,4 +189,75 @@ model DecisionEvent {
   @@index([userId, createdAt])
   @@index([comparisonSetId])
   @@index([diagnosisSessionId])
+}
+
+model ProfileDiagnosisSnapshot {
+  id                     String                     @id @default(cuid()) @db.VarChar(191)
+  profileId              String                     @db.VarChar(191)
+  subjectRole            ProfileSubjectRole
+  gateChoice             ProfileDiagnosisGateChoice
+  sourceType             ProfileDiagnosisSourceType
+  intakeStatus           ProfileIntakeStatus
+  nextStep               ProfileIntakeNextStep
+  lowConfidencePolicy    ProfileLowConfidencePolicy?
+  diagnosisSummary       Json?
+  checklistSummary       Json?
+  checklistTotalItems    Int                        @default(0)
+  checklistCompletedItems Int                       @default(0)
+  checklistCompletionRate Decimal                   @default(0.00) @db.Decimal(5, 2)
+  isChecklistCompleted   Boolean                    @default(false)
+  selectedAt             DateTime?                  @db.DateTime(3)
+  processedAt            DateTime?                  @db.DateTime(3)
+  createdAt              DateTime                   @default(now())
+  updatedAt              DateTime                   @updatedAt
+
+  @@index([profileId, createdAt])
+  @@index([profileId, updatedAt])
+  @@index([intakeStatus, updatedAt])
+}
+
+model RecommendationSnapshot {
+  id              String                         @id @default(cuid()) @db.VarChar(191)
+  recommendationId String                        @unique @db.VarChar(191)
+  profileId       String                         @db.VarChar(191)
+  coupleId        String                         @db.VarChar(191)
+  requestType     RecommendationRequestType
+  status          RecommendationGenerationStatus
+  executionMode   RecommendationExecutionMode
+  fallbackPolicy  RecommendationFallbackPolicy?
+  retryState      RecommendationRetryState
+  retriedCount    Int                            @default(0)
+  maxOptions      Int                            @default(3)
+  mainOptionId    String?                        @db.VarChar(191)
+  contextSnapshot Json?
+  optionsSnapshot Json?
+  failureReason   String?                        @db.VarChar(512)
+  requestedAt     DateTime                       @default(now())
+  completedAt     DateTime?                      @db.DateTime(3)
+  createdAt       DateTime                       @default(now())
+  updatedAt       DateTime                       @updatedAt
+
+  @@index([profileId, requestedAt])
+  @@index([coupleId, requestedAt])
+  @@index([status, requestedAt])
+}
+
+model CoupleConsensusDecision {
+  id               String                         @id @default(cuid()) @db.VarChar(191)
+  decisionId       String                         @unique @db.VarChar(191)
+  coupleId         String                         @db.VarChar(191)
+  profileId        String                         @db.VarChar(191)
+  recommendationId String                         @db.VarChar(191)
+  selectedOptionId String                         @db.VarChar(191)
+  policy           CoupleConflictResolutionPolicy @default(POLICY_A)
+  status           CoupleDecisionStatus
+  votes            Json
+  latestEvent      Json
+  decidedAt        DateTime                       @default(now())
+  createdAt        DateTime                       @default(now())
+  updatedAt        DateTime                       @updatedAt
+
+  @@index([profileId, decidedAt])
+  @@index([coupleId, decidedAt])
+  @@index([recommendationId, decidedAt])
 }
