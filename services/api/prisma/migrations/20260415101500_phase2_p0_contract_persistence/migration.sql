@@ -1,0 +1,75 @@
+CREATE TABLE `ProfileDiagnosisSnapshot` (
+  `id` VARCHAR(191) NOT NULL,
+  `profileId` VARCHAR(191) NOT NULL,
+  `subjectRole` ENUM('BRIDE', 'GROOM') NOT NULL,
+  `gateChoice` ENUM('EXPERIENCED', 'NOT_EXPERIENCED') NOT NULL,
+  `sourceType` ENUM('SELF_REPORTED', 'STUDIO_REPORTED', 'AUTO_ANALYZED', 'MANUAL_SURVEY') NOT NULL,
+  `intakeStatus` ENUM('SUBMITTED', 'DIAGNOSIS_IN_PROGRESS', 'COMPLETED') NOT NULL,
+  `nextStep` ENUM('READY_FOR_RECOMMENDATION', 'REUPLOAD_REQUIRED', 'MANUAL_SURVEY_REQUIRED') NOT NULL,
+  `lowConfidencePolicy` ENUM('POLICY_C_REUPLOAD_THEN_MANUAL') NULL,
+  `diagnosisSummary` JSON NULL,
+  `checklistSummary` JSON NULL,
+  `checklistTotalItems` INTEGER NOT NULL DEFAULT 0,
+  `checklistCompletedItems` INTEGER NOT NULL DEFAULT 0,
+  `checklistCompletionRate` DECIMAL(5, 2) NOT NULL DEFAULT 0.00,
+  `isChecklistCompleted` BOOLEAN NOT NULL DEFAULT false,
+  `selectedAt` DATETIME(3) NULL,
+  `processedAt` DATETIME(3) NULL,
+  `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+
+  INDEX `ProfileDiagnosisSnapshot_profileId_createdAt_idx`(`profileId`, `createdAt`),
+  INDEX `ProfileDiagnosisSnapshot_profileId_updatedAt_idx`(`profileId`, `updatedAt`),
+  INDEX `ProfileDiagnosisSnapshot_intakeStatus_updatedAt_idx`(`intakeStatus`, `updatedAt`),
+  PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE `RecommendationSnapshot` (
+  `id` VARCHAR(191) NOT NULL,
+  `recommendationId` VARCHAR(191) NOT NULL,
+  `profileId` VARCHAR(191) NOT NULL,
+  `coupleId` VARCHAR(191) NOT NULL,
+  `requestType` ENUM('INITIAL', 'REGENERATE') NOT NULL,
+  `status` ENUM('QUEUED', 'GENERATING', 'COMPLETED', 'FAILED') NOT NULL,
+  `executionMode` ENUM('AI_PRIMARY', 'RULE_BASED_FALLBACK') NOT NULL,
+  `fallbackPolicy` ENUM('RULE_BASED_TOP3') NULL,
+  `retryState` ENUM('NONE', 'RETRYING_ONCE', 'RETRY_EXHAUSTED', 'MANUAL_SELECTION_REQUIRED') NOT NULL,
+  `retriedCount` INTEGER NOT NULL DEFAULT 0,
+  `maxOptions` INTEGER NOT NULL DEFAULT 3,
+  `mainOptionId` VARCHAR(191) NULL,
+  `contextSnapshot` JSON NULL,
+  `optionsSnapshot` JSON NULL,
+  `failureReason` VARCHAR(512) NULL,
+  `requestedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `completedAt` DATETIME(3) NULL,
+  `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+
+  UNIQUE INDEX `RecommendationSnapshot_recommendationId_key`(`recommendationId`),
+  INDEX `RecommendationSnapshot_profileId_requestedAt_idx`(`profileId`, `requestedAt`),
+  INDEX `RecommendationSnapshot_coupleId_requestedAt_idx`(`coupleId`, `requestedAt`),
+  INDEX `RecommendationSnapshot_status_requestedAt_idx`(`status`, `requestedAt`),
+  PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE `CoupleConsensusDecision` (
+  `id` VARCHAR(191) NOT NULL,
+  `decisionId` VARCHAR(191) NOT NULL,
+  `coupleId` VARCHAR(191) NOT NULL,
+  `profileId` VARCHAR(191) NOT NULL,
+  `recommendationId` VARCHAR(191) NOT NULL,
+  `selectedOptionId` VARCHAR(191) NOT NULL,
+  `policy` ENUM('POLICY_A') NOT NULL DEFAULT 'POLICY_A',
+  `status` ENUM('PENDING', 'AGREED', 'POLICY_A_APPLIED', 'FINALIZED') NOT NULL,
+  `votes` JSON NOT NULL,
+  `latestEvent` JSON NOT NULL,
+  `decidedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+
+  UNIQUE INDEX `CoupleConsensusDecision_decisionId_key`(`decisionId`),
+  INDEX `CoupleConsensusDecision_profileId_decidedAt_idx`(`profileId`, `decidedAt`),
+  INDEX `CoupleConsensusDecision_coupleId_decidedAt_idx`(`coupleId`, `decidedAt`),
+  INDEX `CoupleConsensusDecision_recommendationId_decidedAt_idx`(`recommendationId`, `decidedAt`),
+  PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
