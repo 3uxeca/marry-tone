@@ -1,9 +1,72 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 import { NativeShell } from "../_components/native-shell";
 import { VisualBlock } from "../_components/visual-block";
+import { patchFlowState, readFlowState } from "../_lib/p0-flow-state";
+import { submitConsensus } from "../_lib/p0-api-client";
 
 export default function ConsensusPage() {
+  const state = readFlowState();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusText, setStatusText] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const selectedOptionId = state.selectedOptionId ?? state.optionIds[0];
+
+  const handleConfirm = async () => {
+    if (!state.recommendationId || !selectedOptionId) {
+      setError("추천안이 없어 합의를 확정할 수 없습니다. 먼저 추천을 생성해주세요.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError(null);
+    setStatusText(null);
+
+    const groomOptionId = state.optionIds[1] ?? selectedOptionId;
+
+    try {
+      const response = await submitConsensus({
+        coupleId: state.coupleId,
+        recommendationId: state.recommendationId,
+        selectedOptionId,
+        votes: [
+          {
+            actor: "BRIDE",
+            optionId: selectedOptionId,
+            preferenceRank: 1,
+            reason: "피부 톤 조화 우선",
+          },
+          {
+            actor: "GROOM",
+            optionId: groomOptionId,
+            preferenceRank: 1,
+            reason: "핏 안정성 우선",
+          },
+        ],
+      });
+
+      if (!response.success) {
+        setError(response.error.message);
+        return;
+      }
+
+      patchFlowState({
+        consensusDecisionId: response.data.decisionId,
+        selectedOptionId: response.data.selectedOptionId,
+      });
+
+      setStatusText(`합의 확정 완료: ${response.data.status}`);
+    } catch {
+      setError("합의 확정 중 오류가 발생했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <NativeShell
       activeNav="checklist"
@@ -24,9 +87,9 @@ export default function ConsensusPage() {
           정리했습니다.
         </p>
         <div className="mt2-pill-row">
-          <span className="mt2-pill">Dress: Soft Romantic</span>
-          <span className="mt2-pill">Tuxedo: Classic Navy</span>
-          <span className="mt2-pill">Hall: Warm Ivory</span>
+          <span className="mt2-pill">Selected Option: {selectedOptionId ?? "N/A"}</span>
+          <span className="mt2-pill">Policy: A</span>
+          <span className="mt2-pill">Mode: Conflict-safe</span>
         </div>
       </article>
 
@@ -52,7 +115,7 @@ export default function ConsensusPage() {
       <article className="mt2-card">
         <h3>최종 확정 전 확인</h3>
         <ul className="mt2-list">
-          <li>충돌 항목 2건 정책 A로 해소</li>
+          <li>충돌 항목 발생 시 정책 A 자동 적용</li>
           <li>후보 3안 중 선호도 점수 최고안 선택</li>
           <li>체크리스트 100% 완료 시 완료 처리</li>
         </ul>
@@ -60,10 +123,12 @@ export default function ConsensusPage() {
           <Link className="mt2-button ghost" href="/checklist">
             체크리스트 열기
           </Link>
-          <Link className="mt2-button" href="/coach">
+          <button className="mt2-button" onClick={() => void handleConfirm()} disabled={isSubmitting} type="button">
             최종 1안 확정
-          </Link>
+          </button>
         </div>
+        {statusText ? <p>{statusText}</p> : null}
+        {error ? <p>{error}</p> : null}
       </article>
     </NativeShell>
   );

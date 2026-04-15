@@ -1,9 +1,42 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { NativeShell } from "../../_components/native-shell";
+import { patchFlowState, readFlowState } from "../../_lib/p0-flow-state";
+import { submitDiagnosisGate } from "../../_lib/p0-api-client";
 import { VisualBlock } from "../../_components/visual-block";
 
 export default function DiagnosisGatePage() {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSelect = async (choice: "EXPERIENCED" | "NOT_EXPERIENCED") => {
+    const state = readFlowState();
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await submitDiagnosisGate(state.profileId, choice);
+      if (!response.success) {
+        setError(response.error.message);
+        return;
+      }
+
+      patchFlowState({
+        gateChoice: choice,
+      });
+
+      router.push(choice === "EXPERIENCED" ? "/diagnosis/intake" : "/diagnosis/upload");
+    } catch {
+      setError("진단 게이트 저장 중 오류가 발생했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <NativeShell
       activeNav="diagnosis"
@@ -21,9 +54,16 @@ export default function DiagnosisGatePage() {
             <span className="mt2-pill">재진단 생략</span>
           </div>
           <div className="mt2-actions">
-            <Link href="/diagnosis/intake" className="mt2-button">
+            <button
+              className="mt2-button"
+              onClick={() => {
+                void handleSelect("EXPERIENCED");
+              }}
+              disabled={isSubmitting}
+              type="button"
+            >
               결과 입력하기
-            </Link>
+            </button>
           </div>
         </article>
 
@@ -36,12 +76,26 @@ export default function DiagnosisGatePage() {
             <span className="mt2-pill">자동 분석</span>
           </div>
           <div className="mt2-actions">
-            <Link href="/diagnosis/upload" className="mt2-button">
+            <button
+              className="mt2-button"
+              onClick={() => {
+                void handleSelect("NOT_EXPERIENCED");
+              }}
+              disabled={isSubmitting}
+              type="button"
+            >
               업로드 시작
-            </Link>
+            </button>
           </div>
         </article>
       </section>
+
+      {error ? (
+        <section className="mt2-card soft">
+          <h3>처리 실패</h3>
+          <p>{error}</p>
+        </section>
+      ) : null}
     </NativeShell>
   );
 }

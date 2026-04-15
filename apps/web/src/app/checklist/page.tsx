@@ -1,20 +1,61 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
 import { NativeShell } from "../_components/native-shell";
 import { VisualBlock } from "../_components/visual-block";
-
-const checklistItems = [
-  { label: "퍼스널컬러 진단 결과 확정", done: true },
-  { label: "골격 타입 분류 확인", done: true },
-  { label: "드레스/턱시도 최종안 선택", done: true },
-  { label: "헤어/메이크업 콘셉트 확정", done: true },
-  { label: "촬영 콘셉트 및 포즈 보드 저장", done: true },
-  { label: "예식장 환경/동선 체크", done: true }
-];
+import { fetchChecklist, type ChecklistItem } from "../_lib/p0-api-client";
+import { readFlowState } from "../_lib/p0-flow-state";
 
 export default function ChecklistPage() {
-  const completedCount = checklistItems.filter((item) => item.done).length;
-  const progress = Math.round((completedCount / checklistItems.length) * 100);
+  const [items, setItems] = useState<ChecklistItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [profileId] = useState(() => readFlowState().profileId);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const run = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetchChecklist(profileId);
+        if (!response.success) {
+          if (mounted) {
+            setError(response.error.message);
+          }
+          return;
+        }
+
+        if (mounted) {
+          setItems(response.data.items);
+        }
+      } catch {
+        if (mounted) {
+          setError("체크리스트 조회 중 오류가 발생했습니다.");
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    void run();
+
+    return () => {
+      mounted = false;
+    };
+  }, [profileId]);
+
+  const completedCount = useMemo(
+    () => items.filter((item) => item.status === "COMPLETED").length,
+    [items],
+  );
+  const total = items.length;
+  const progress = total === 0 ? 0 : Math.round((completedCount / total) * 100);
 
   return (
     <NativeShell
@@ -26,7 +67,7 @@ export default function ChecklistPage() {
       <article className="mt2-card strong">
         <VisualBlock title="Checklist" subtitle="진행률 추적 보드" tone="mint" aspect="square" />
         <h2>
-          진행률 {completedCount}/{checklistItems.length} ({progress}%)
+          진행률 {completedCount}/{total} ({progress}%)
         </h2>
         <div className="mt2-progress" aria-label={`체크리스트 진행률 ${progress}%`}>
           <span style={{ width: `${progress}%` }} />
@@ -43,13 +84,18 @@ export default function ChecklistPage() {
 
       <article className="mt2-card">
         <h3>항목 상세</h3>
+        {loading ? <p>체크리스트를 불러오는 중입니다...</p> : null}
+        {error ? <p>{error}</p> : null}
         <ul className="mt2-list">
-          {checklistItems.map((item) => (
+          {items.map((item) => (
             <li
-              key={item.label}
-              style={{ textDecoration: item.done ? "line-through" : "none", opacity: item.done ? 0.75 : 1 }}
+              key={item.key}
+              style={{
+                textDecoration: item.status === "COMPLETED" ? "line-through" : "none",
+                opacity: item.status === "COMPLETED" ? 0.75 : 1,
+              }}
             >
-              {item.done ? "완료" : "대기"} · {item.label}
+              {item.status === "COMPLETED" ? "완료" : "대기"} · {item.label}
             </li>
           ))}
         </ul>
