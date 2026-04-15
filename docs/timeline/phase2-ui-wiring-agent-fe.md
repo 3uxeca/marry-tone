@@ -13,3 +13,4 @@
 | 2026-04-15 11:31 | 라우트 API wiring 구현 | done | gate/intake/upload/recommendations/comparison/consensus/checklist |
 | 2026-04-15 11:34 | 빌드/테스트 검증 | done | web typecheck/build + api e2e |
 | 2026-04-15 11:38 | main 병합 완료 | done | `phase2/ui-wiring` -> `main` |
+| 2026-04-15 11:49 | CORS/포트 이슈 수정 | done | web 기본 API URL `:4000`, api `enableCors`, api 기본 포트 `4000` |
