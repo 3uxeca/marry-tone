@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
+import { VisualBlock } from "../_components/visual-block";
 
 const alternatives = [
   {
@@ -35,14 +35,7 @@ export default function RecommendationPage() {
         <article className="mt2-card strong">
           <h2>Main Pick A</h2>
           <p>Warm Spring 팔레트 + 웨이브 실루엣 조합으로 예식장 조명 조건에 최적화된 안입니다.</p>
-          <Image
-            src="/stitch/_9/screen.png"
-            alt="Main recommendation preview"
-            width={1080}
-            height={1920}
-            className="mt2-media"
-            priority
-          />
+          <VisualBlock title="Main A" subtitle="Elegant Film Concept" tone="rose" />
           <div className="mt2-pill-row">
             <span className="mt2-pill">Dress: A-line Satin</span>
             <span className="mt2-pill">Tuxedo: Charcoal Classic</span>

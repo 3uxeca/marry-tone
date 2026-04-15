@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
+import { VisualBlock } from "../_components/visual-block";
 
 export default function ConsensusPage() {
   return (
@@ -17,13 +17,7 @@ export default function ConsensusPage() {
       }
     >
       <article className="mt2-card strong">
-        <Image
-          src="/stitch/_10/screen.png"
-          alt="합의 보드 레이아웃 참고 이미지"
-          className="mt2-media square"
-          width={1080}
-          height={1920}
-        />
+        <VisualBlock title="Consensus A" subtitle="합의된 최종 1안" tone="plum" aspect="square" />
         <h2>최종 합의안 1안</h2>
         <p>
           기본 정책 A를 적용해 드레스, 턱시도, 헤어/메이크업, 촬영 컨셉, 예식장 환경을 하나의 안으로

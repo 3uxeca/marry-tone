@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../../_components/native-shell";
+import { VisualBlock } from "../../_components/visual-block";
 
 export default function SkeletonResultPage() {
   return (
@@ -15,14 +15,7 @@ export default function SkeletonResultPage() {
         <article className="mt2-card strong">
           <h2>웨이브 타입 우세</h2>
           <p>상체 곡선과 관절 대비를 기반으로 부드러운 라인이 가장 안정적입니다.</p>
-          <Image
-            src="/stitch/_7/screen.png"
-            alt="Skeleton diagnosis summary"
-            width={1080}
-            height={1920}
-            className="mt2-media"
-            priority
-          />
+          <VisualBlock title="Body Frame" subtitle="Wave dominant" tone="sky" />
           <div className="mt2-pill-row">
             <span className="mt2-pill">Confidence 82%</span>
             <span className="mt2-pill">Primary: Wave</span>

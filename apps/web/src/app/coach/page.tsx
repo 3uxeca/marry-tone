@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
+import { VisualBlock } from "../_components/visual-block";
 
 export default function CoachPage() {
   return (
@@ -17,13 +17,7 @@ export default function CoachPage() {
       }
     >
       <article className="mt2-card strong">
-        <Image
-          src="/stitch/_12/screen.png"
-          alt="코칭 인사이트 대시보드 참고 이미지"
-          className="mt2-media"
-          width={1080}
-          height={1920}
-        />
+        <VisualBlock title="Coach Board" subtitle="주간 인사이트 요약" tone="sky" />
         <h2>이번 주 코칭 핵심</h2>
         <p>
           피부 톤 조화, 실루엣 밸런스, 촬영 콘셉트 일관성을 기준으로 우선 실행해야 할 3개 액션을

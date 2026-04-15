@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
+import { VisualBlock } from "../_components/visual-block";
 
 const vaultCards = [
   {
@@ -30,14 +30,7 @@ export default function SavedPage() {
         <article className="mt2-card strong">
           <h2>Couple Vault Snapshot</h2>
           <p>최근 저장한 스타일 묶음을 기준으로 A/B 비교 보드를 자동 구성합니다.</p>
-          <Image
-            src="/stitch/_5/screen.png"
-            alt="Saved vault collage preview"
-            width={1080}
-            height={1920}
-            className="mt2-media"
-            priority
-          />
+          <VisualBlock title="Vault Board" subtitle="저장 후보 묶음" tone="plum" />
           <div className="mt2-pill-row">
             <span className="mt2-pill">4 Looks Saved</span>
             <span className="mt2-pill">2 Ready To Compare</span>

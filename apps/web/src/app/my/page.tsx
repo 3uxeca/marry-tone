@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
+import { VisualBlock } from "../_components/visual-block";
 
 export default function MyPage() {
   return (
@@ -12,13 +12,7 @@ export default function MyPage() {
       subtitle="진단 요약, 빠른 실행, 다음 추천 액션을 확인하세요."
     >
       <article className="mt2-card strong">
-        <Image
-          src="/stitch/_13/screen.png"
-          alt="마이 페이지 참고 이미지"
-          className="mt2-media square"
-          width={1080}
-          height={1920}
-        />
+        <VisualBlock title="My Profile" subtitle="진단/추천 상태 요약" tone="rose" aspect="square" />
         <h2>다샤 & 파트너</h2>
         <p>예식 D-128 · 추천 플랜 버전 v1.2 · 체크리스트 100% 완료</p>
         <div className="mt2-pill-row">

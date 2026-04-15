@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../../_components/native-shell";
+import { VisualBlock } from "../../_components/visual-block";
 
 const palette = ["Warm Ivory", "Peach Rose", "Dusty Coral", "Champagne Gold"] as const;
 
@@ -17,14 +17,7 @@ export default function PersonalColorResultPage() {
         <article className="mt2-card strong">
           <h2>Warm Spring Harmony</h2>
           <p>피부 톤 대비와 채도 반응을 기준으로 생기를 가장 잘 살리는 범위입니다.</p>
-          <Image
-            src="/stitch/_6/screen.png"
-            alt="Personal color result sample"
-            width={1080}
-            height={1920}
-            className="mt2-media"
-            priority
-          />
+          <VisualBlock title="Tone Analysis" subtitle="Warm Spring Harmony" tone="sand" />
           <div className="mt2-pill-row">
             {palette.map((tone) => (
               <span key={tone} className="mt2-pill">

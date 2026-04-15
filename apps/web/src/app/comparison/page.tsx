@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../_components/native-shell";
+import { VisualBlock } from "../_components/visual-block";
 
 const boards = [
   {
@@ -30,13 +30,11 @@ export default function ComparisonPage() {
             <article key={board.key} className="mt2-card">
               <h3>{board.title}</h3>
               <p>{board.summary}</p>
-              <Image
-                src="/stitch/_8/screen.png"
-                alt={`${board.title} comparison preview`}
-                width={1080}
-                height={1920}
-                className="mt2-media square"
-                priority={board.key === "A"}
+              <VisualBlock
+                title={`${board.key} Board`}
+                subtitle="Dress · Tuxedo · Concept"
+                tone={board.key === "A" ? "plum" : "slate"}
+                aspect="square"
               />
               <ul className="mt2-list">
                 <li>드레스/턱시도 조합 가독성</li>

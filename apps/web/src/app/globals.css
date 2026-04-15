@@ -539,6 +539,80 @@ p {
   aspect-ratio: 1 / 1;
 }
 
+.mt2-visual {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid #efe5ec;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.mt2-visual--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.mt2-visual--square {
+  aspect-ratio: 1 / 1;
+}
+
+.mt2-visual--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.mt2-visual--rose {
+  background: linear-gradient(145deg, #fff7fc 0%, #ffe2f6 60%, #ffd1ef 100%);
+}
+
+.mt2-visual--plum {
+  background: linear-gradient(145deg, #f8f2ff 0%, #ebddff 55%, #dcc8ff 100%);
+}
+
+.mt2-visual--sky {
+  background: linear-gradient(145deg, #f5fbff 0%, #deefff 58%, #cde6ff 100%);
+}
+
+.mt2-visual--mint {
+  background: linear-gradient(145deg, #f5fffb 0%, #dff5ec 56%, #c7e8dc 100%);
+}
+
+.mt2-visual--sand {
+  background: linear-gradient(145deg, #fffaf4 0%, #f6ead7 58%, #ecddc5 100%);
+}
+
+.mt2-visual--slate {
+  background: linear-gradient(145deg, #f5f6fa 0%, #e5e8f1 58%, #d7dce9 100%);
+}
+
+.mt2-visual-title {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #3b2f3a;
+}
+
+.mt2-visual-subtitle {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #5f5260;
+}
+
+.mt2-visual-chip-row {
+  margin-top: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.mt2-visual-chip-row span {
+  width: 1.25rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: rgba(61, 47, 57, 0.14);
+}
+
 .mt2-pill-row {
   margin-top: 0.7rem;
   display: flex;

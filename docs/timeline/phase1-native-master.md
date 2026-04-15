@@ -40,3 +40,4 @@
 | 2026-04-14 21:35 | coordinator | phase1/native-coord | ui-a/ui-b/ui-c 병합 완료 | done | merge commit 3건 |
 | 2026-04-14 21:41 | coordinator | phase1/native-coord | `<img>` -> `next/image` 전환(신규 이식 페이지) | done | lint 경고를 stitch preview 2건으로 축소 |
 | 2026-04-14 21:42 | coordinator | main | `@marrytone/web` build 재검증 | done | build 성공, 경고 2건은 `/ui/stitch/*` 기존 미리보기 경로 |
+| 2026-04-15 00:06 | coordinator | main | 서비스 라우트 `screen.png` 의존 제거, `VisualBlock` 기반 대체 | done | `/ui/stitch/*` 미리보기 경로 제외 |

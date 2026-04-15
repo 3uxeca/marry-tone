@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { NativeShell } from "../../_components/native-shell";
+import { VisualBlock } from "../../_components/visual-block";
 
 export default function DiagnosisUploadPage() {
   return (
@@ -15,13 +15,7 @@ export default function DiagnosisUploadPage() {
         <article className="mt2-card strong">
           <h2>퍼스널컬러용 사진</h2>
           <p>머리카락과 몸을 가린 맨얼굴 사진 1장을 업로드해 톤 진단을 진행합니다.</p>
-          <Image
-            className="mt2-media"
-            src="/stitch/_4/screen.png"
-            alt="Personal color upload guide"
-            width={1080}
-            height={1920}
-          />
+          <VisualBlock title="Face Shot" subtitle="퍼스널컬러 분석용" tone="rose" />
           <ul className="mt2-list">
             <li>자연광 또는 균일 조명</li>
             <li>필터/보정 해제</li>
@@ -32,13 +26,7 @@ export default function DiagnosisUploadPage() {
         <article className="mt2-card soft">
           <h2>골격 진단용 사진</h2>
           <p>전신 실루엣이 드러나는 사진으로 체형 지표를 추출해 타입을 분류합니다.</p>
-          <Image
-            className="mt2-media"
-            src="/stitch/_7/screen.png"
-            alt="Body type upload guide"
-            width={1080}
-            height={1920}
-          />
+          <VisualBlock title="Body Shot" subtitle="골격 분류 지표 추출" tone="sky" />
           <ul className="mt2-list">
             <li>정면/측면 각 1장 권장</li>
             <li>신체 라인이 보이는 착장</li>
