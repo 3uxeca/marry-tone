@@ -26,6 +26,8 @@ class PersonalColorDiagnosisResponse(BaseModel):
     recommended_colors: list[str]
     confidence: float = Field(ge=0.0, le=1.0)
     model_version: str = "placeholder-v0"
+    low_confidence: "LowConfidenceMetadata"
+    inference: "InferenceMetadata"
 
 
 class BodyMeasurementsDiagnosisRequest(BaseModel):
@@ -49,6 +51,8 @@ class BodyMeasurementsDiagnosisResponse(BaseModel):
     measurements: BodyMeasurements
     confidence: float = Field(ge=0.0, le=1.0)
     model_version: str = "placeholder-v0"
+    low_confidence: "LowConfidenceMetadata"
+    inference: "InferenceMetadata"
 
 
 class SkeletonTypeDiagnosisRequest(BaseModel):
@@ -63,4 +67,19 @@ class SkeletonTypeDiagnosisResponse(BaseModel):
     style_tips: list[str]
     confidence: float = Field(ge=0.0, le=1.0)
     model_version: str = "placeholder-v0"
+    low_confidence: "LowConfidenceMetadata"
+    inference: "InferenceMetadata"
 
+
+class LowConfidenceMetadata(BaseModel):
+    policy_code: Literal["policy-c"] = "policy-c"
+    threshold: float = Field(gt=0.0, lt=1.0)
+    confidence_band: Literal["low", "medium", "high"]
+    is_low_confidence: bool
+    policy_action: Literal["proceed", "request-additional-input", "manual-review"]
+    review_recommended: bool
+
+
+class InferenceMetadata(BaseModel):
+    backend: Literal["deterministic-placeholder"] = "deterministic-placeholder"
+    deterministic_seed: str = Field(min_length=8, max_length=64)
