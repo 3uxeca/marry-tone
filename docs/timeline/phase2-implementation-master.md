@@ -26,6 +26,7 @@
 | 2026-04-15 11:07 | coordinator | phase2/impl-coord | 구현 검증 및 타임라인 지속 기록 확인 | done | `contracts build`, `api build`, `api e2e` 모두 통과 |
 | 2026-04-15 11:11 | coordinator | main | `phase2/impl-coord`를 `main`에 병합 | done | merge commit 생성, `.codex/config.toml` 로컬 변경은 그대로 유지 |
 | 2026-04-15 11:13 | coordinator | main | main 기준 재검증 | done | `contracts build`, `api build`, `api e2e` 모두 통과 |
+| 2026-04-15 11:41 | coordinator | main | Step5 UI wiring 완료 반영 | done | 상세 로그는 `phase2-ui-wiring-master.md` 참조 |
 
 ## Ownership Matrix
 

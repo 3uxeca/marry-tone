@@ -12,3 +12,4 @@
 | 2026-04-15 11:24 | 공통 P0 client state/API 유틸 구현 | done | `p0-flow-state.ts`, `p0-api-client.ts` |
 | 2026-04-15 11:31 | 라우트 API wiring 구현 | done | gate/intake/upload/recommendations/comparison/consensus/checklist |
 | 2026-04-15 11:34 | 빌드/테스트 검증 | done | web typecheck/build + api e2e |
+| 2026-04-15 11:38 | main 병합 완료 | done | `phase2/ui-wiring` -> `main` |
