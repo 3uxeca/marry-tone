@@ -24,6 +24,8 @@
 | 2026-04-15 10:58 | coordinator | phase2/impl-coord | `db/be/ml` 브랜치 통합 머지 | done | 충돌 없이 통합 |
 | 2026-04-15 11:05 | coordinator | phase2/impl-coord | ML 진단 서비스 연동 + DI wiring 수정 | done | `ProfileModule`에 `MlDiagnosisService` 주입 |
 | 2026-04-15 11:07 | coordinator | phase2/impl-coord | 구현 검증 및 타임라인 지속 기록 확인 | done | `contracts build`, `api build`, `api e2e` 모두 통과 |
+| 2026-04-15 11:11 | coordinator | main | `phase2/impl-coord`를 `main`에 병합 | done | merge commit 생성, `.codex/config.toml` 로컬 변경은 그대로 유지 |
+| 2026-04-15 11:13 | coordinator | main | main 기준 재검증 | done | `contracts build`, `api build`, `api e2e` 모두 통과 |
 
 ## Ownership Matrix
 
