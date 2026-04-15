@@ -18,3 +18,4 @@
 | 2026-04-15 11:38 | coordinator | main | `phase2/ui-wiring` -> `main` 병합 | done | merge commit 생성 |
 | 2026-04-15 11:41 | coordinator | main | main 기준 재검증 | done | web build, web typecheck(빌드 후), api e2e 통과 |
 | 2026-04-15 11:49 | coordinator | main | Gate 클릭 CORS 오류 대응 | done | web API 기본 URL 4000 정정 + api CORS 허용 + api 기본 포트 4000 정정 |
+| 2026-04-15 12:02 | coordinator | main | contracts 모듈 로드 오류 대응 | done | contracts 런타임 엔트리 dist 전환 + api prebuild/prestart 훅으로 자동 contracts build + jest transform 정리 |

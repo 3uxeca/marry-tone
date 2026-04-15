@@ -14,3 +14,4 @@
 | 2026-04-15 11:34 | 빌드/테스트 검증 | done | web typecheck/build + api e2e |
 | 2026-04-15 11:38 | main 병합 완료 | done | `phase2/ui-wiring` -> `main` |
 | 2026-04-15 11:49 | CORS/포트 이슈 수정 | done | web 기본 API URL `:4000`, api `enableCors`, api 기본 포트 `4000` |
+| 2026-04-15 12:02 | contracts 런타임 import 오류 수정 | done | contracts `dist` 엔트리화, api prestart/prebuild/pretest:e2e 훅 추가, jest 변환 범위 TS로 제한 |

@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "pnpm --filter @marrytone/contracts run build",
     "build": "nest build",
+    "prestart": "pnpm --filter @marrytone/contracts run build",
     "start": "nest start",
+    "prestart:dev": "pnpm --filter @marrytone/contracts run build",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main.js",
     "test": "jest --config ./test/jest-e2e.json",
+    "pretest:e2e": "pnpm --filter @marrytone/contracts run build",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prisma:generate": "prisma generate",
     "prisma:migrate:dev": "prisma migrate dev"
