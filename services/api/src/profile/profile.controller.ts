@@ -33,11 +33,11 @@ export class ProfileController {
 
   @Post("diagnosis-intake")
   @HttpCode(HttpStatus.OK)
-  submitDiagnosisIntake(
+  async submitDiagnosisIntake(
     @Body() body: SubmitProfileIntakeRequest,
     @Res({ passthrough: true }) reply: ReplyLike,
-  ): SubmitProfileIntakeResponse {
-    const envelope = this.profileService.submitProfileIntake(body);
+  ): Promise<SubmitProfileIntakeResponse> {
+    const envelope = await this.profileService.submitProfileIntake(body);
     if (isErrorEnvelope(envelope)) {
       reply.status(HttpStatus.BAD_REQUEST);
     }

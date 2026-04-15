@@ -4,12 +4,8 @@ import {
   DiagnosisGateChoice,
   DiagnosisSourceType,
   LowConfidencePolicy,
-  PersonalColorSeason,
-  PersonalColorTone,
-  PersonalColorUndertone,
   ProfileIntakeNextStep,
   ProfileIntakeStatus,
-  SkeletonType,
   type GetProfileChecklistSummaryResponse,
   type SubmitDiagnosisGateChoiceRequest,
   type SubmitDiagnosisGateChoiceResponse,
@@ -19,6 +15,7 @@ import {
 import { Injectable } from "@nestjs/common";
 
 import { errorEnvelope, successEnvelope } from "../common/api-envelope";
+import { MlDiagnosisService } from "../internal/ml-diagnosis.service";
 import { P0MemoryStoreService } from "../p0/p0-memory-store.service";
 
 const CHECKLIST_LABEL: Record<ChecklistItemKey, string> = {
@@ -33,7 +30,10 @@ const CHECKLIST_LABEL: Record<ChecklistItemKey, string> = {
 
 @Injectable()
 export class ProfileService {
-  constructor(private readonly store: P0MemoryStoreService) {}
+  constructor(
+    private readonly store: P0MemoryStoreService,
+    private readonly mlDiagnosisService: MlDiagnosisService,
+  ) {}
 
   submitDiagnosisGate(
     request: SubmitDiagnosisGateChoiceRequest,
@@ -57,7 +57,7 @@ export class ProfileService {
     });
   }
 
-  submitProfileIntake(request: SubmitProfileIntakeRequest): SubmitProfileIntakeResponse {
+  async submitProfileIntake(request: SubmitProfileIntakeRequest): Promise<SubmitProfileIntakeResponse> {
     if (!request.profileId || !request.gateChoice || !request.diagnosisInput) {
       return errorEnvelope("BAD_REQUEST", "profileId, gateChoice, diagnosisInput are required");
     }
@@ -87,35 +87,25 @@ export class ProfileService {
       return errorEnvelope("BAD_REQUEST", "lowConfidencePolicy must be POLICY_C_REUPLOAD_THEN_MANUAL");
     }
 
-    const hasLowConfidenceSignal =
-      request.diagnosisInput.facePhotoAssetId.includes("low") ||
-      request.diagnosisInput.bodyPhotoAssetId.includes("low");
+    const mlDiagnosis = await this.mlDiagnosisService.diagnoseFromAssets({
+      profileId: request.profileId,
+      facePhotoAssetId: request.diagnosisInput.facePhotoAssetId,
+      bodyPhotoAssetId: request.diagnosisInput.bodyPhotoAssetId,
+    });
 
     const intakePayload = {
       profileId: request.profileId,
       intakeId,
-      status: hasLowConfidenceSignal
+      status: mlDiagnosis.lowConfidence
         ? ProfileIntakeStatus.DIAGNOSIS_IN_PROGRESS
         : ProfileIntakeStatus.COMPLETED,
-      nextStep: hasLowConfidenceSignal
-        ? ProfileIntakeNextStep.MANUAL_SURVEY_REQUIRED
-        : ProfileIntakeNextStep.READY_FOR_RECOMMENDATION,
+      nextStep: mlDiagnosis.nextStep,
       lowConfidencePolicy,
       diagnosisSummary: {
-        personalColor: hasLowConfidenceSignal
+        personalColor: mlDiagnosis.lowConfidence
           ? undefined
-          : {
-              season: PersonalColorSeason.SPRING,
-              tone: PersonalColorTone.BRIGHT,
-              undertone: PersonalColorUndertone.WARM,
-              confidence: 0.84,
-            },
-        skeleton: hasLowConfidenceSignal
-          ? undefined
-          : {
-              type: SkeletonType.STRAIGHT,
-              confidence: 0.8,
-            },
+          : mlDiagnosis.personalColor,
+        skeleton: mlDiagnosis.lowConfidence ? undefined : mlDiagnosis.skeleton,
         sourceType: DiagnosisSourceType.AUTO_ANALYZED,
       },
     };
