@@ -1,0 +1,717 @@
+openapi: 3.0.3
+info:
+  title: MarryTone P0 REST Contract
+  version: 0.1.0-draft
+  description: >
+    Contract-first draft for MarryTone P0 modules before database schema and
+    business implementation are finalized. This document defines the initial
+    REST API contract for profile, recommendation, couple, and wardrobe flows.
+servers:
+  - url: https://api.marrytone.local
+    description: Local/staging placeholder
+tags:
+  - name: profile
+  - name: recommendation
+  - name: wardrobe
+  - name: couple
+paths:
+  /v1/profile/diagnosis-gate:
+    post:
+      tags: [profile]
+      summary: Save diagnosis experience gate state
+      operationId: postDiagnosisGate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiagnosisGateRequest'
+      responses:
+        '200':
+          description: Gate decision stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiagnosisGateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/profile/diagnosis-intake:
+    post:
+      tags: [profile]
+      summary: Submit existing diagnosis input or photo-based intake metadata
+      operationId: postDiagnosisIntake
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiagnosisIntakeRequest'
+      responses:
+        '200':
+          description: Intake accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiagnosisIntakeResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/profile/checklist:
+    get:
+      tags: [profile]
+      summary: Fetch MVP completion checklist and progress
+      operationId: getChecklist
+      parameters:
+        - in: query
+          name: profileId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Checklist retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChecklistResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/recommendations/generate:
+    post:
+      tags: [recommendation]
+      summary: Generate main option and alternatives for wedding styling
+      operationId: postGenerateRecommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRecommendationsRequest'
+      responses:
+        '202':
+          description: Recommendation generation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateRecommendationsResponse'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /v1/wardrobe/style-cards:
+    post:
+      tags: [wardrobe]
+      summary: Create or refresh recommendation style cards
+      operationId: postStyleCards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StyleCardCreateRequest'
+      responses:
+        '201':
+          description: Style cards created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StyleCardsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    get:
+      tags: [wardrobe]
+      summary: Retrieve style cards for a recommendation set
+      operationId: getStyleCards
+      parameters:
+        - in: query
+          name: recommendationSetId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Style cards retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StyleCardsResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/wardrobe/comparison-sets:
+    post:
+      tags: [wardrobe]
+      summary: Build comparison set for preference conflict review
+      operationId: postComparisonSets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComparisonSetRequest'
+      responses:
+        '201':
+          description: Comparison set created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComparisonSetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/couple/consensus/confirm:
+    post:
+      tags: [couple]
+      summary: Confirm final couple consensus and apply policy A when needed
+      operationId: postConsensusConfirm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsensusConfirmRequest'
+      responses:
+        '200':
+          description: Consensus confirmed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsensusConfirmResponse'
+        '409':
+          $ref: '#/components/responses/Conflict'
+components:
+  responses:
+    BadRequest:
+      description: Request validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Requested resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: Business state conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiMeta:
+      type: object
+      required: [requestId, timestamp]
+      properties:
+        requestId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+    ErrorDetail:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        field:
+          type: string
+          nullable: true
+    ErrorResponse:
+      type: object
+      required: [success, error, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [false]
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: array
+              items:
+                $ref: '#/components/schemas/ErrorDetail'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    DiagnosisExperienceType:
+      type: string
+      enum: [existing-results, no-experience]
+    PersonalColorSeason:
+      type: string
+      enum: [spring-warm, summer-cool, autumn-warm, winter-cool, unknown]
+    PersonalColorTone:
+      type: string
+      enum: [light, mute, bright, deep, balanced, unknown]
+    SkeletonType:
+      type: string
+      enum: [straight, wave, natural, unknown]
+    SubjectRole:
+      type: string
+      enum: [bride, groom]
+    RecommendationStatus:
+      type: string
+      enum: [pending, completed, failed]
+    FailurePolicy:
+      type: string
+      enum: [example-fallback]
+      description: P0 fixed failure policy based on approved default example behavior.
+    ConflictPolicy:
+      type: string
+      enum: [policy-a]
+      description: Default conflict resolution policy for preference clashes.
+    ConfidencePolicy:
+      type: string
+      enum: [policy-c]
+      description: Handling policy when automatic diagnosis confidence is low.
+    ChecklistItemCode:
+      type: string
+      enum:
+        - bride-personal-color
+        - bride-skeleton
+        - groom-personal-color
+        - groom-skeleton
+        - dress-main-option
+        - tuxedo-main-option
+        - hair-makeup-main-option
+        - shoot-concept-main-option
+        - venue-confirmed
+        - final-checklist-complete
+    DiagnosisGateRequest:
+      type: object
+      required:
+        - profileId
+        - subject
+        - diagnosisExperience
+      properties:
+        profileId:
+          type: string
+          format: uuid
+        subject:
+          $ref: '#/components/schemas/SubjectRole'
+        diagnosisExperience:
+          $ref: '#/components/schemas/DiagnosisExperienceType'
+        hasExistingPersonalColor:
+          type: boolean
+        hasExistingSkeletonDiagnosis:
+          type: boolean
+    DiagnosisGateResult:
+      type: object
+      required:
+        - intakeMode
+        - nextStep
+      properties:
+        intakeMode:
+          type: string
+          enum: [manual-entry, photo-upload]
+        nextStep:
+          type: string
+          enum: [diagnosis-intake]
+    DiagnosisGateResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/DiagnosisGateResult'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    ExistingDiagnosisInput:
+      type: object
+      required: [personalColorSeason, personalColorTone, skeletonType]
+      properties:
+        personalColorSeason:
+          $ref: '#/components/schemas/PersonalColorSeason'
+        personalColorTone:
+          $ref: '#/components/schemas/PersonalColorTone'
+        skeletonType:
+          $ref: '#/components/schemas/SkeletonType'
+        note:
+          type: string
+          maxLength: 300
+    UploadAssetReference:
+      type: object
+      required: [assetId, kind, encrypted]
+      properties:
+        assetId:
+          type: string
+          format: uuid
+        kind:
+          type: string
+          enum: [bare-face-covered-hair, full-body]
+        encrypted:
+          type: boolean
+          enum: [true]
+        retentionPolicy:
+          type: string
+          enum: [policy-a]
+          description: Photo retention policy approved for P0.
+    DiagnosisIntakeRequest:
+      type: object
+      required:
+        - profileId
+        - subject
+        - intakeMode
+      properties:
+        profileId:
+          type: string
+          format: uuid
+        subject:
+          $ref: '#/components/schemas/SubjectRole'
+        intakeMode:
+          type: string
+          enum: [manual-entry, photo-upload]
+        existingDiagnosis:
+          $ref: '#/components/schemas/ExistingDiagnosisInput'
+        uploadAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/UploadAssetReference'
+        confidencePolicy:
+          $ref: '#/components/schemas/ConfidencePolicy'
+    DiagnosisSnapshot:
+      type: object
+      required:
+        - personalColorSeason
+        - personalColorTone
+        - skeletonType
+        - source
+        - confidenceStatus
+      properties:
+        personalColorSeason:
+          $ref: '#/components/schemas/PersonalColorSeason'
+        personalColorTone:
+          $ref: '#/components/schemas/PersonalColorTone'
+        skeletonType:
+          $ref: '#/components/schemas/SkeletonType'
+        source:
+          type: string
+          enum: [manual-entry, ai-diagnosis]
+        confidenceStatus:
+          type: string
+          enum: [high, low, not-applicable]
+    DiagnosisIntakeResult:
+      type: object
+      required:
+        - subject
+        - diagnosis
+        - nextStep
+      properties:
+        subject:
+          $ref: '#/components/schemas/SubjectRole'
+        diagnosis:
+          $ref: '#/components/schemas/DiagnosisSnapshot'
+        nextStep:
+          type: string
+          enum: [recommendations-generate]
+    DiagnosisIntakeResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/DiagnosisIntakeResult'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    ChecklistItem:
+      type: object
+      required: [code, title, completed]
+      properties:
+        code:
+          $ref: '#/components/schemas/ChecklistItemCode'
+        title:
+          type: string
+        completed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
+          nullable: true
+    ChecklistData:
+      type: object
+      required: [profileId, completionRate, allCompleted, items]
+      properties:
+        profileId:
+          type: string
+          format: uuid
+        completionRate:
+          type: integer
+          minimum: 0
+          maximum: 100
+        allCompleted:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChecklistItem'
+    ChecklistResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/ChecklistData'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    RecommendationRequestSubject:
+      type: object
+      required: [subject, personalColorSeason, personalColorTone, skeletonType]
+      properties:
+        subject:
+          $ref: '#/components/schemas/SubjectRole'
+        personalColorSeason:
+          $ref: '#/components/schemas/PersonalColorSeason'
+        personalColorTone:
+          $ref: '#/components/schemas/PersonalColorTone'
+        skeletonType:
+          $ref: '#/components/schemas/SkeletonType'
+    GenerateRecommendationsRequest:
+      type: object
+      required:
+        - profileId
+        - bride
+        - groom
+        - venueMood
+        - conflictPolicy
+        - failurePolicy
+      properties:
+        profileId:
+          type: string
+          format: uuid
+        bride:
+          $ref: '#/components/schemas/RecommendationRequestSubject'
+        groom:
+          $ref: '#/components/schemas/RecommendationRequestSubject'
+        venueMood:
+          type: string
+          maxLength: 120
+        preferenceNotes:
+          type: string
+          maxLength: 500
+        conflictPolicy:
+          $ref: '#/components/schemas/ConflictPolicy'
+        failurePolicy:
+          $ref: '#/components/schemas/FailurePolicy'
+    GenerateRecommendationsData:
+      type: object
+      required:
+        - recommendationSetId
+        - status
+        - targetLatencySeconds
+      properties:
+        recommendationSetId:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/RecommendationStatus'
+        targetLatencySeconds:
+          type: integer
+          enum: [10]
+        message:
+          type: string
+    GenerateRecommendationsResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/GenerateRecommendationsData'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    WardrobeCategory:
+      type: string
+      enum: [dress, tuxedo, hair-makeup, shoot-concept]
+    StyleOption:
+      type: object
+      required:
+        - optionId
+        - rank
+        - isMain
+        - category
+        - title
+        - summary
+      properties:
+        optionId:
+          type: string
+          format: uuid
+        rank:
+          type: integer
+          minimum: 1
+          maximum: 3
+        isMain:
+          type: boolean
+        category:
+          $ref: '#/components/schemas/WardrobeCategory'
+        title:
+          type: string
+        summary:
+          type: string
+        reasons:
+          type: array
+          items:
+            type: string
+        imagePrompt:
+          type: string
+    StyleCardCreateRequest:
+      type: object
+      required: [recommendationSetId]
+      properties:
+        recommendationSetId:
+          type: string
+          format: uuid
+    StyleCardsData:
+      type: object
+      required: [recommendationSetId, cards]
+      properties:
+        recommendationSetId:
+          type: string
+          format: uuid
+        cards:
+          type: array
+          items:
+            $ref: '#/components/schemas/StyleOption'
+    StyleCardsResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/StyleCardsData'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    ComparisonPick:
+      type: object
+      required: [category, leftOptionId, rightOptionId]
+      properties:
+        category:
+          $ref: '#/components/schemas/WardrobeCategory'
+        leftOptionId:
+          type: string
+          format: uuid
+        rightOptionId:
+          type: string
+          format: uuid
+    ComparisonSetRequest:
+      type: object
+      required: [recommendationSetId, selections, conflictPolicy]
+      properties:
+        recommendationSetId:
+          type: string
+          format: uuid
+        selections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComparisonPick'
+        conflictPolicy:
+          $ref: '#/components/schemas/ConflictPolicy'
+    ComparisonDecision:
+      type: object
+      required: [category, resolvedOptionId, resolution]
+      properties:
+        category:
+          $ref: '#/components/schemas/WardrobeCategory'
+        resolvedOptionId:
+          type: string
+          format: uuid
+        resolution:
+          type: string
+          enum: [agreed, policy-a-applied]
+    ComparisonSetData:
+      type: object
+      required: [comparisonSetId, decisions]
+      properties:
+        comparisonSetId:
+          type: string
+          format: uuid
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComparisonDecision'
+    ComparisonSetResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/ComparisonSetData'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
+    ConsensusChoice:
+      type: object
+      required: [category, optionId]
+      properties:
+        category:
+          $ref: '#/components/schemas/WardrobeCategory'
+        optionId:
+          type: string
+          format: uuid
+    ConsensusConfirmRequest:
+      type: object
+      required:
+        - profileId
+        - recommendationSetId
+        - comparisonSetId
+        - finalSelections
+        - conflictPolicy
+      properties:
+        profileId:
+          type: string
+          format: uuid
+        recommendationSetId:
+          type: string
+          format: uuid
+        comparisonSetId:
+          type: string
+          format: uuid
+        finalSelections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsensusChoice'
+        venueConfirmed:
+          type: boolean
+        conflictPolicy:
+          $ref: '#/components/schemas/ConflictPolicy'
+    ConsensusConfirmData:
+      type: object
+      required: [consensusId, finalizedAt, checklistCompletionRate]
+      properties:
+        consensusId:
+          type: string
+          format: uuid
+        finalizedAt:
+          type: string
+          format: date-time
+        checklistCompletionRate:
+          type: integer
+          minimum: 0
+          maximum: 100
+        nextStep:
+          type: string
+          enum: [checklist]
+    ConsensusConfirmResponse:
+      type: object
+      required: [success, data, meta]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: '#/components/schemas/ConsensusConfirmData'
+        meta:
+          $ref: '#/components/schemas/ApiMeta'
