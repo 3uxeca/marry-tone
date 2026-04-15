@@ -1,9 +1,57 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { NativeShell } from "../../_components/native-shell";
 import { VisualBlock } from "../../_components/visual-block";
+import { patchFlowState, readFlowState } from "../../_lib/p0-flow-state";
+import { submitPhotoIntake } from "../../_lib/p0-api-client";
 
 export default function DiagnosisUploadPage() {
+  const router = useRouter();
+  const [facePhotoAssetId, setFacePhotoAssetId] = useState("face-asset-001");
+  const [bodyPhotoAssetId, setBodyPhotoAssetId] = useState("body-asset-001");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusText, setStatusText] = useState<string | null>(null);
+
+  const handleSubmit = async () => {
+    const state = readFlowState();
+    setIsSubmitting(true);
+    setStatusText(null);
+
+    try {
+      const response = await submitPhotoIntake({
+        profileId: state.profileId,
+        facePhotoAssetId,
+        bodyPhotoAssetId,
+      });
+
+      if (!response.success) {
+        setStatusText(`업로드 처리 실패: ${response.error.message}`);
+        return;
+      }
+
+      patchFlowState({
+        gateChoice: "NOT_EXPERIENCED",
+        intakeId: response.data.intakeId,
+      });
+
+      if (response.data.nextStep === "READY_FOR_RECOMMENDATION") {
+        setStatusText("자동 진단 완료. 결과 페이지로 이동합니다.");
+        router.push("/results/personal-color");
+        return;
+      }
+
+      setStatusText(`저신뢰 감지(${response.data.nextStep})로 재업로드 또는 수동 입력이 필요합니다.`);
+    } catch {
+      setStatusText("업로드 처리 중 오류가 발생했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <NativeShell
       activeNav="diagnosis"
@@ -21,6 +69,10 @@ export default function DiagnosisUploadPage() {
             <li>필터/보정 해제</li>
             <li>정면, 눈뜨고 촬영</li>
           </ul>
+          <label>
+            Face Asset ID
+            <input value={facePhotoAssetId} onChange={(event) => setFacePhotoAssetId(event.target.value)} />
+          </label>
         </article>
 
         <article className="mt2-card soft">
@@ -32,6 +84,10 @@ export default function DiagnosisUploadPage() {
             <li>신체 라인이 보이는 착장</li>
             <li>왜곡이 적은 거리에서 촬영</li>
           </ul>
+          <label>
+            Body Asset ID
+            <input value={bodyPhotoAssetId} onChange={(event) => setBodyPhotoAssetId(event.target.value)} />
+          </label>
         </article>
       </section>
 
@@ -47,10 +103,11 @@ export default function DiagnosisUploadPage() {
           <Link href="/diagnosis/intake" className="mt2-button ghost">
             수동 입력으로 이동
           </Link>
-          <Link href="/results/skeleton" className="mt2-button">
+          <button className="mt2-button" onClick={() => void handleSubmit()} disabled={isSubmitting} type="button">
             업로드 후 결과 보기
-          </Link>
+          </button>
         </div>
+        {statusText ? <p>{statusText}</p> : null}
       </section>
     </NativeShell>
   );
