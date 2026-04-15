@@ -7,6 +7,8 @@ from .models import (
     BodyMeasurements,
     BodyMeasurementsDiagnosisRequest,
     BodyMeasurementsDiagnosisResponse,
+    InferenceMetadata,
+    LowConfidenceMetadata,
     PersonalColorDiagnosisRequest,
     PersonalColorDiagnosisResponse,
     SkeletonTypeDiagnosisRequest,
@@ -34,6 +36,33 @@ def _pick(seed: str, options: list[str]) -> str:
     return options[index]
 
 
+def _confidence_band(confidence: float, threshold: float) -> str:
+    if confidence < threshold:
+        return "low"
+    if confidence >= 0.85:
+        return "high"
+    return "medium"
+
+
+def _build_low_confidence_metadata(
+    confidence: float,
+    threshold: float,
+) -> LowConfidenceMetadata:
+    is_low_confidence = confidence < threshold
+    return LowConfidenceMetadata(
+        threshold=threshold,
+        confidence_band=_confidence_band(confidence, threshold),  # type: ignore[arg-type]
+        is_low_confidence=is_low_confidence,
+        policy_action="request-additional-input" if is_low_confidence else "proceed",
+        review_recommended=is_low_confidence,
+    )
+
+
+def _build_inference_metadata(canonical: str) -> InferenceMetadata:
+    seed = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
+    return InferenceMetadata(deterministic_seed=seed)
+
+
 def infer_personal_color(
     payload: PersonalColorDiagnosisRequest,
 ) -> PersonalColorDiagnosisResponse:
@@ -49,12 +78,15 @@ def infer_personal_color(
     }
 
     confidence = round(_fraction(f"{canonical}:confidence", 0.60, 0.92), 3)
+    threshold = 0.72
 
     return PersonalColorDiagnosisResponse(
         season=season,  # type: ignore[arg-type]
         undertone=undertone,  # type: ignore[arg-type]
         recommended_colors=palette_by_season[season],
         confidence=confidence,
+        low_confidence=_build_low_confidence_metadata(confidence, threshold),
+        inference=_build_inference_metadata(canonical),
     )
 
 
@@ -81,6 +113,7 @@ def infer_body_measurements(
         silhouette = "balanced"
 
     confidence = round(_fraction(f"{canonical}:confidence", 0.58, 0.90), 3)
+    threshold = 0.70
 
     return BodyMeasurementsDiagnosisResponse(
         silhouette_type=silhouette,  # type: ignore[arg-type]
@@ -92,6 +125,8 @@ def infer_body_measurements(
             inseam_cm=inseam,
         ),
         confidence=confidence,
+        low_confidence=_build_low_confidence_metadata(confidence, threshold),
+        inference=_build_inference_metadata(canonical),
     )
 
 
@@ -117,10 +152,12 @@ def infer_skeleton_type(
     }
 
     confidence = round(_fraction(f"{canonical}:confidence", 0.62, 0.93), 3)
+    threshold = 0.74
 
     return SkeletonTypeDiagnosisResponse(
         skeleton_type=skeleton_type,  # type: ignore[arg-type]
         style_tips=tips_by_type[skeleton_type],
         confidence=confidence,
+        low_confidence=_build_low_confidence_metadata(confidence, threshold),
+        inference=_build_inference_metadata(canonical),
     )
-
